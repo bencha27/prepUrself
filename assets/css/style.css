@@ -1,0 +1,12 @@
+:root {
+    --teal: #37bbca ;
+    --blue: #0191b6 ;
+    --yellow: #f9d80d ;
+    --green: #d3de16;
+    --orange: #ff7b17;
+}
+
+h1 {
+    color:white;
+    background-color: #0191b6;
+}
