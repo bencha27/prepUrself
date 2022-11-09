@@ -13,6 +13,7 @@ html {
 h1 {
   color: white;
   background-color: var(--blue);
+  font-family: 'Marcellus', serif;
 }
 
 select {
