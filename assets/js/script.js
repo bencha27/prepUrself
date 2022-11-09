@@ -4,7 +4,7 @@
 // Variables for form selects and IDs
 var searchBoxEl = $("#search-box");
 // bellow is inside <section id="search-box">
-var searchFormEl = $("#search-form");
+// var searchFormEl = $("#search-form");
 // bellow is inside <form id="search-form"></form>
 var searchInputEl = $("#search-input");
 var dietInputEl = $("#diet-input");
@@ -33,28 +33,9 @@ var sundayEl = $("#search-box");
 // The endpoint with only id and key parameters
 var formSearchEdamamURL = "https://api.edamam.com/api/recipes/v2?type=public&app_id=0b97683e&app_key=8b9f9e545d235c4ae37ac9cbb16a65a5"
 
-//  fetch vs ajax
-// fetch()
-//   .then(function (response) {
-//     return response.json();
-//   })
-//   .then(function (data) {
-//     console.log(data);
-//   });
-
-// $.ajax({
-//   url: "/api/getWeather",
-//   data: {
-//     parameter: thing
-//   },
-//   success: function( result ) {
-//     $( "#element" ).html( "<strong>" + result + "</strong> degrees" );
-//   }
-// });
-
-main
+// main
 $(function() {
-    searchButtonEl.on("click", ajaxQueryData());
+    searchButtonEl.on("click", ajaxQueryData);
 
 });
 
@@ -63,25 +44,25 @@ var ajaxQueryData = function(event) {
     event.preventDefault();
     //collect and store parameters
     var parameterObj = {};
-    $(searchFormEl).children().each(function () {
-        var inputID = $(this).attr("id");
-        
-
+    $(searchBoxEl).children().each(function () {
+        // console.log($(this).val());
+        // If the option($(this)) has a value than add it to the paramater object
+        if(($(this).val() != "") && ($(this).attr("id") != "search-button") && ($(this).val() != null)) {
+            var inputID = $(this).attr("id");
+            var inputValue = $(this).val();
+            parameterObj[inputID] = inputValue; 
+            // console.log($(this).val());
+        }
     });
-    // 
+
+    // console.log(parameterObj); // Shows parameters
+
+    // use paramater obj to query
+    $.ajax({
+        url: "https://api.edamam.com/api/recipes/v2?type=public&app_id=0b97683e&app_key=8b9f9e545d235c4ae37ac9cbb16a65a5",
+        data: parameterObj,
+        success: function( result ) {
+            console.log(result); // SHOULD SHOW API OBJECT WITH RECIPES
+        }
+    });
 }
-
-
-// ajax parameter object example
-// var parameterObj = {
-//     q: "chicken",
-//     diet: "low-carb"
-// };
-
-// $.ajax({
-//   url: "https://api.edamam.com/api/recipes/v2?type=public&app_id=0b97683e&app_key=8b9f9e545d235c4ae37ac9cbb16a65a5",
-//   data: parameterObj,
-//   success: function( result ) {
-//     console.log(result);
-//   }
-// });
