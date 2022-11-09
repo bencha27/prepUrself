@@ -503,11 +503,24 @@
     <section id="search-box">
         <form id="search-form"></form>
             <input id="search-input" type="text">
-            <select id="diet-input"></select>
-            <select id="health-input"></select>
-            <select id="cuisineType-input"></select>
-            <select id="mealType-input"></select>
-            <select id="dishType-input"></select>
+            <div class="accordion">
+                <!-- We should probably select els to divs -->
+                <select id="diet-input" class> Diet Options
+
+                </select>
+                <select id="health-input">
+
+                </select>
+                <select id="cuisineType-input"> Cuisine Options
+
+                </select>
+                <select id="mealType-input"> Type of Meal Options
+
+                </select>
+                <select id="dishType-input">
+
+                </select>
+            </div>
             <button id="search-button">Find recipes!</button>
     </section>
 </main>
