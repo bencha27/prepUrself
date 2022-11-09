@@ -19,7 +19,8 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-  </head>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
 
   <body>
     <header>
@@ -29,9 +30,9 @@
     <main>
         <img>
         <section id="search-box">
-            <form id="search-form"></form>
-                <input id="search-input" type="text" placeholder="What to prep?">
-                <select id="diet-input">
+            <!-- <form id="search-form"></form> -->
+                <input id="q" type="text" placeholder="What to prep?">
+                <select id="diet">
                     <option value="none">Health</option>
                     <option value="balanced">Balanced</option>
                     <option value="high-fiber">High-Fiber</option>
@@ -40,7 +41,7 @@
                     <option value="low-fat">Low-Fat</option>
                     <option value="low-sodium">Low-Sodium</option>
                 </select>
-                <select id="health-input">
+                <select id="health">
                     <option value="none">Diet</option>
                     <option value="dairy-free">Dairy-Free</option>
                     <option value="gluten-free">Gluten-Free</option>
@@ -49,7 +50,7 @@
                     <option value="vegan">Vegan</option>
                     <option value="vegetarian">Vegetarian</option>
                 </select>
-                <select id="cuisineType-input">
+                <select id="cuisineType">
                     <option value="none">Cuisine</option>
                     <option value="american">American</option>
                     <option value="asian">Asian</option>
@@ -61,14 +62,14 @@
                     <option value="middle eastern">Middle Eastern</option>
                     <option value="south american">South American</option>
                 </select>
-                <select id="mealType-input">
+                <select id="mealType">
                     <option value="none">Meal</option>
                     <option value="breakfast">Breakfast</option>
                     <option value="brunch">Brunch</option>
                     <option value="lunch/dinner">Lunch/Dinner</option>
                     <option value="snack">Snack</option>
                 </select>
-                <select id="dishType-input">
+                <select id="dishType">
                     <option value="none">Dish Type</option>
                     <option value="starter">Appetizer</option>
                     <option value="desserts">Desserts</option>
