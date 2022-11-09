@@ -35,59 +35,68 @@
     <main>
       <img />
       <section id="search-box">
-        <!-- <form id="search-form"></form> -->
-        <input id="q" type="text" placeholder="What to prep?" />
-        <select id="diet">
-          <option value="none">Health</option>
-          <option value="balanced">Balanced</option>
-          <option value="high-fiber">High-Fiber</option>
-          <option value="high-protein">High-Protein</option>
-          <option value="low-carb">Low-Carb</option>
-          <option value="low-fat">Low-Fat</option>
-          <option value="low-sodium">Low-Sodium</option>
-        </select>
-        <select id="health">
-          <option value="none">Diet</option>
-          <option value="dairy-free">Dairy-Free</option>
-          <option value="gluten-free">Gluten-Free</option>
-          <option value="keto-friendly">Keto-Friendly</option>
-          <option value="paleo">Paleo</option>
-          <option value="vegan">Vegan</option>
-          <option value="vegetarian">Vegetarian</option>
-        </select>
-        <select id="cuisineType">
-          <option value="none">Cuisine</option>
-          <option value="american">American</option>
-          <option value="asian">Asian</option>
-          <option value="french">French</option>
-          <option value="indian">Indian</option>
-          <option value="italian">Italian</option>
-          <option value="mediterranean">Mediterranean</option>
-          <option value="mexican">Mexican</option>
-          <option value="middle eastern">Middle Eastern</option>
-          <option value="south american">South American</option>
-        </select>
-        <select id="mealType">
-          <option value="none">Meal</option>
-          <option value="breakfast">Breakfast</option>
-          <option value="brunch">Brunch</option>
-          <option value="lunch/dinner">Lunch/Dinner</option>
-          <option value="snack">Snack</option>
-        </select>
-        <select id="dishType">
-          <option value="none">Dish Type</option>
-          <option value="starter">Appetizer</option>
-          <option value="desserts">Desserts</option>
-          <option value="drinks">Drinks</option>
-          <option value="main course">Main Course</option>
-          <option value="pasta">Pasta</option>
-          <option value="pizza">Pizza</option>
-          <option value="salad">Salad</option>
-          <option value="sandwich">Sandwich</option>
-          <option value="side dish">Side Dish</option>
-          <option value="soup">Soup</option>
-        </select>
-        <button id="search-button">Find recipes!</button>
+        <form id="search-form"></form>
+        <div class="container">
+            <div class =" row justify-content-around">
+                <select id="diet" class ="col-2">
+                    <option value="none">Health</option>
+                    <option value="balanced">Balanced</option>
+                    <option value="high-fiber">High-Fiber</option>
+                    <option value="high-protein">High-Protein</option>
+                    <option value="low-carb">Low-Carb</option>
+                    <option value="low-fat">Low-Fat</option>
+                    <option value="low-sodium">Low-Sodium</option>
+                </select>
+                <select id="health" class ="col-2">
+                    <option value="none">Diet</option>
+                    <option value="dairy-free">Dairy-Free</option>
+                    <option value="gluten-free">Gluten-Free</option>
+                    <option value="keto-friendly">Keto-Friendly</option>
+                    <option value="paleo">Paleo</option>
+                    <option value="vegan">Vegan</option>
+                    <option value="vegetarian">Vegetarian</option>
+                </select>
+                <select id="cuisineType" class ="col-2">
+                    <option value="none">Cuisine</option>
+                    <option value="american">American</option>
+                    <option value="asian">Asian</option>
+                    <option value="french">French</option>
+                    <option value="indian">Indian</option>
+                    <option value="italian">Italian</option>
+                    <option value="mediterranean">Mediterranean</option>
+                    <option value="mexican">Mexican</option>
+                    <option value="middle eastern">Middle Eastern</option>
+                    <option value="south american">South American</option>
+                </select>
+                <select id="mealType" class ="col-2">
+                    <option value="none">Meal</option>
+                    <option value="breakfast">Breakfast</option>
+                    <option value="brunch">Brunch</option>
+                    <option value="lunch/dinner">Lunch/Dinner</option>
+                    <option value="snack">Snack</option>
+                </select>
+                <select id="dishType" class ="col-2">
+                    <option value="none">Dish Type</option>
+                    <option value="starter">Appetizer</option>
+                    <option value="desserts">Desserts</option>
+                    <option value="drinks">Drinks</option>
+                    <option value="main course">Main Course</option>
+                    <option value="pasta">Pasta</option>
+                    <option value="pizza">Pizza</option>
+                    <option value="salad">Salad</option>
+                    <option value="sandwich">Sandwich</option>
+                    <option value="side dish">Side Dish</option>
+                    <option value="soup">Soup</option>
+                </select>
+            </div>
+        </div>
+        <div class ="grid text-center">
+            <div class = "asdf">
+                <input id="q" type="text" placeholder="What to prep?" class="col-4"/>
+                <button type="button"
+                class="btn btn-primary btn-lg" id="search-button">Find recipes!</button>
+            </div>
+        </div>
       </section>
     </main>
 
@@ -99,7 +108,7 @@
     
     -->
     <!-- Lines 100–499: Aside Bootstrap -->
-
+    <div>
     <aside class="col-lg-2">
       <section id="schedule"></section>
       <div
@@ -272,6 +281,7 @@
         </div>
       </div>
     </aside>
+    </div>
     <!--  
 
 
@@ -498,85 +508,5 @@
 
 -->
     <!-- Lines 500+: Main/Search Bootstrap -->
-    <main>
-      <section id="search-box">
-        <form id="search-form"></form>
-        <!-- Moved input to bottom added-->
-        <!-- wrapped selectors in a container -->
-        <div class="container">
-          <div class="row justify-content-around">
-            <select id="diet-input" class="col-2">
-              <option value="none">Health</option>
-              <option value="balanced">Balanced</option>
-              <option value="high-fiber">High-Fiber</option>
-              <option value="high-protein">High-Protein</option>
-              <option value="low-carb">Low-Carb</option>
-              <option value="low-fat">Low-Fat</option>
-              <option value="low-sodium">Low-Sodium</option>
-            </select>
-            <select id="health-input" class="col-2">
-              <option value="none">Diet</option>
-              <option value="dairy-free">Dairy-Free</option>
-              <option value="gluten-free">Gluten-Free</option>
-              <option value="keto-friendly">Keto-Friendly</option>
-              <option value="paleo">Paleo</option>
-              <option value="vegan">Vegan</option>
-              <option value="vegetarian">Vegetarian</option>
-            </select>
-            <select id="cuisineType-input" class="col-2">
-              <option value="none">Cuisine</option>
-              <option value="american">American</option>
-              <option value="asian">Asian</option>
-              <option value="french">French</option>
-              <option value="indian">Indian</option>
-              <option value="italian">Italian</option>
-              <option value="mediterranean">Mediterranean</option>
-              <option value="mexican">Mexican</option>
-              <option value="middle eastern">Middle Eastern</option>
-              <option value="south american">South American</option>
-            </select>
-            <select id="mealType-input" class="col-2">
-              <option value="none">Meal</option>
-              <option value="breakfast">Breakfast</option>
-              <option value="brunch">Brunch</option>
-              <option value="lunch/dinner">Lunch/Dinner</option>
-              <option value="snack">Snack</option>
-            </select>
-            <select id="dishType-input" class="col-2">
-              <option value="none">Dish Type</option>
-              <option value="starter">Appetizer</option>
-              <option value="desserts">Desserts</option>
-              <option value="drinks">Drinks</option>
-              <option value="main course">Main Course</option>
-              <option value="pasta">Pasta</option>
-              <option value="pizza">Pizza</option>
-              <option value="salad">Salad</option>
-              <option value="sandwich">Sandwich</option>
-              <option value="side dish">Side Dish</option>
-              <option value="soup">Soup</option>
-            </select>
-          </div>
-        </div>
-        <div class="container">
-          <div class="justify-content-center">
-            <input
-              id="search-input"
-              type="text"
-              placeholder="What to prep?"
-              class="col-4"
-            />
-            <!-- added classes and type for bootstrap styling -->
-            <button
-              type="button"
-              class="btn btn-primary btn-lg"
-              id="search-button"
-            >
-              Find recipes!
-            </button>
-          </div>
-        </div>
-      </section>
-    </main>
-    <script src="./assets/js/script.js"></script>
-  </body>
+    <footer></footer>
 </html>
