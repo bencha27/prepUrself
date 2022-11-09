@@ -45,16 +45,17 @@ var ajaxQueryData = function(event) {
     //collect and store parameters
     var parameterObj = {};
     $(searchBoxEl).children().each(function () {
-        // console.log($(this).val());
+        // console.log("This.val() in .each: " + $(this).val());
         // If the option($(this)) has a value than add it to the paramater object
-        if(($(this).val() != "") && ($(this).attr("id") != "search-button") && ($(this).val() != null)) {
+        if(($(this).val() != "") && ($(this).attr("id") != "search-button") && ($(this).val() != null) && ($(this).val() != "none")) {
             var inputID = $(this).attr("id");
             var inputValue = $(this).val();
             parameterObj[inputID] = inputValue; 
-            // console.log($(this).val());
+            // console.log("This.val() in if(): " + $(this).val());
         }
     });
 
+    // console.log("parameters: " + parameterObj); // Shows parameters
     // console.log(parameterObj); // Shows parameters
 
     // use paramater obj to query
@@ -62,6 +63,7 @@ var ajaxQueryData = function(event) {
         url: "https://api.edamam.com/api/recipes/v2?type=public&app_id=0b97683e&app_key=8b9f9e545d235c4ae37ac9cbb16a65a5",
         data: parameterObj,
         success: function( result ) {
+            // console.log("ajax result: " +result); // SHOULD SHOW API OBJECT WITH RECIPES
             console.log(result); // SHOULD SHOW API OBJECT WITH RECIPES
         }
     });
