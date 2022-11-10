@@ -8,7 +8,7 @@ function getPhotoApi() {
     })
     .then(function (data) {
         var backgroundImage = document.getElementById("background-image");
-        backgroundImage.setAttribute("src", data.image)
+        backgroundImage.setAttribute("src", data.image);
     })    
 }
 
