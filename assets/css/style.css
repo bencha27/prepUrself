@@ -53,3 +53,8 @@ option {
   background-color: var(--green);
   color: var(--teal);
 }
+.card-img {
+  background-size: cover;
+  opacity: 0.1;
+  filter: sepia(90%) hue-rotate(190deg) saturate(800%);
+}
