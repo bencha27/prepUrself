@@ -13,10 +13,22 @@ html {
 h1 {
   color: white;
   background-color: var(--blue);
+  font-family: 'Marcellus', serif;
+  padding-bottom: 10px;
 }
 
 select {
-    background-color: var(--orange)
+    background-color: var(--orange);
+    border-color: var(--blue);
+    border-radius: 10px;
+}
+
+option {
+  border-radius: 10px;
+}
+
+#search-bar {
+  margin-top: 350px;
 }
 
 #search-button {
