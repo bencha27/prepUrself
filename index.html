@@ -13,6 +13,16 @@
       integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
       crossorigin="anonymous"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+      integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
       integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
@@ -21,497 +31,455 @@
     ></script>
   </head>
 
-  <body>
-    <header>
-      <h1>prepUrself</h1>
-    </header>
-
-    <main>
-      <img />
-      <section id="search-box">
-        <form id="search-form"></form>
-        <input id="search-input" type="text" placeholder="What to prep?" />
-        <select id="diet-input">
-          <option value="none">Health</option>
-          <option value="balanced">Balanced</option>
-          <option value="high-fiber">High-Fiber</option>
-          <option value="high-protein">High-Protein</option>
-          <option value="low-carb">Low-Carb</option>
-          <option value="low-fat">Low-Fat</option>
-          <option value="low-sodium">Low-Sodium</option>
-        </select>
-        <select id="health-input">
-          <option value="none">Diet</option>
-          <option value="dairy-free">Dairy-Free</option>
-          <option value="gluten-free">Gluten-Free</option>
-          <option value="keto-friendly">Keto-Friendly</option>
-          <option value="paleo">Paleo</option>
-          <option value="vegan">Vegan</option>
-          <option value="vegetarian">Vegetarian</option>
-        </select>
-        <select id="cuisineType-input">
-          <option value="none">Cuisine</option>
-          <option value="american">American</option>
-          <option value="asian">Asian</option>
-          <option value="french">French</option>
-          <option value="indian">Indian</option>
-          <option value="italian">Italian</option>
-          <option value="mediterranean">Mediterranean</option>
-          <option value="mexican">Mexican</option>
-          <option value="middle eastern">Middle Eastern</option>
-          <option value="south american">South American</option>
-        </select>
-        <select id="mealType-input">
-          <option value="none">Meal</option>
-          <option value="breakfast">Breakfast</option>
-          <option value="brunch">Brunch</option>
-          <option value="lunch/dinner">Lunch/Dinner</option>
-          <option value="snack">Snack</option>
-        </select>
-        <select id="dishType-input">
-          <option value="none">Dish Type</option>
-          <option value="starter">Appetizer</option>
-          <option value="desserts">Desserts</option>
-          <option value="drinks">Drinks</option>
-          <option value="main course">Main Course</option>
-          <option value="pasta">Pasta</option>
-          <option value="pizza">Pizza</option>
-          <option value="salad">Salad</option>
-          <option value="sandwich">Sandwich</option>
-          <option value="side dish">Side Dish</option>
-          <option value="soup">Soup</option>
-        </select>
-        <button id="search-button">Find recipes!</button>
-      </section>
-    </main>
-
-    <section id="search-results"></section>
-    <!-- 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    -->
-    <!-- Lines 100–499: Aside Bootstrap -->
-
-    <aside class="col-lg-2">
-      <section id="schedule"></section>
-      <div
-        id="monday"
-        class="card text-center"
-        style="width: 18rem; height: 8.5rem"
-      >
-        <div class="card-body">
-          <h5 class="card-title text-center text-decoration-underline">
-            Monday
-          </h5>
-          <p class="card-text text-center">Beef Tacos</p>
-          <button
-            type="button"
-            class="btn btn-dark"
-            style="
-              --bs-btn-padding-y: 0.25rem;
-              --bs-btn-padding-x: 0.5rem;
-              --bs-btn-font-size: 0.75rem;
-            "
-          >
-            <i class="fa-regular fa-trash-can"></i>
-            Remove Recipe
-          </button>
+  <body class="row">
+    <div class="col-lg-2">
+      <aside class="aside">
+        <div id="monday" class="card" style="width: 22rem; height: 9.5rem">
+          <div class="card-body">
+            <h6 class="card-title text-decoration-underline">Monday</h6>
+            <div class="row">
+              <p class="col-lg-9 card-text">
+                <span>Breakfast:</span>
+              </p>
+              <button
+                type="button"
+                class="col-lg-3 btn btn-outline-secondary justify-content-end"
+                style="
+                  --bs-btn-padding-y: 0.25rem;
+                  --bs-btn-padding-x: 0.5rem;
+                  --bs-btn-font-size: 0.75rem;
+                "
+              >
+                <i class="fa-regular fa-trash-can"></i>
+              </button>
+            </div>
+            <div class="row">
+              <p class="col-lg-9 card-text">
+                <span>Lunch:</span>
+              </p>
+              <button
+                type="button"
+                class="col-lg-3 btn btn-outline-secondary justify-content-end"
+                style="
+                  --bs-btn-padding-y: 0.25rem;
+                  --bs-btn-padding-x: 0.5rem;
+                  --bs-btn-font-size: 0.75rem;
+                "
+              >
+                <i class="fa-regular fa-trash-can"></i>
+              </button>
+            </div>
+            <div class="row">
+              <p class="col-lg-9 card-text">
+                <span>Dinner:</span>
+              </p>
+              <button
+                type="button"
+                class="col-lg-3 btn btn-outline-secondary justify-content-end"
+                style="
+                  --bs-btn-padding-y: 0.25rem;
+                  --bs-btn-padding-x: 0.5rem;
+                  --bs-btn-font-size: 0.75rem;
+                "
+              >
+                <i class="fa-regular fa-trash-can"></i>
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
-      <div
-        id="tuesday"
-        class="card text-center"
-        style="width: 18rem; height: 8.5rem"
-      >
-        <div class="card-body">
-          <h5 class="card-title text-center text-decoration-underline">
-            Tuesday
-          </h5>
-          <p class="card-text text-center">Beef Tacos</p>
-          <button
-            type="button"
-            class="btn btn-dark"
-            style="
-              --bs-btn-padding-y: 0.25rem;
-              --bs-btn-padding-x: 0.5rem;
-              --bs-btn-font-size: 0.75rem;
-            "
-          >
-            <i class="fa-regular fa-trash-can"></i>
-            Remove Recipe
-          </button>
+
+        <div id="tuesday" class="card" style="width: 22rem; height: 9.5rem">
+          <div class="card-body">
+            <h6 class="card-title text-decoration-underline">Tuesday</h6>
+            <div class="row">
+              <p class="col-lg-9 card-text">
+                <span>Breakfast:</span>
+              </p>
+              <button
+                type="button"
+                class="col-lg-3 btn btn-outline-secondary justify-content-end"
+                style="
+                  --bs-btn-padding-y: 0.25rem;
+                  --bs-btn-padding-x: 0.5rem;
+                  --bs-btn-font-size: 0.75rem;
+                "
+              >
+                <i class="fa-regular fa-trash-can"></i>
+              </button>
+            </div>
+            <div class="row">
+              <p class="col-lg-9 card-text">
+                <span>Lunch:</span>
+              </p>
+              <button
+                type="button"
+                class="col-lg-3 btn btn-outline-secondary justify-content-end"
+                style="
+                  --bs-btn-padding-y: 0.25rem;
+                  --bs-btn-padding-x: 0.5rem;
+                  --bs-btn-font-size: 0.75rem;
+                "
+              >
+                <i class="fa-regular fa-trash-can"></i>
+              </button>
+            </div>
+            <div class="row">
+              <p class="col-lg-9 card-text">
+                <span>Dinner:</span>
+              </p>
+              <button
+                type="button"
+                class="col-lg-3 btn btn-outline-secondary justify-content-end"
+                style="
+                  --bs-btn-padding-y: 0.25rem;
+                  --bs-btn-padding-x: 0.5rem;
+                  --bs-btn-font-size: 0.75rem;
+                "
+              >
+                <i class="fa-regular fa-trash-can"></i>
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
-      <div
-        id="wednesday"
-        class="card text-center"
-        style="width: 18rem; height: 8.5rem"
-      >
-        <div class="card-body">
-          <h5 class="card-title text-center text-decoration-underline">
-            Wednesday
-          </h5>
-          <p class="card-text text-center">Spaghetti with Meatballs</p>
-          <button
-            type="button"
-            class="btn btn-dark"
-            style="
-              --bs-btn-padding-y: 0.25rem;
-              --bs-btn-padding-x: 0.5rem;
-              --bs-btn-font-size: 0.75rem;
-            "
-          >
-            <i class="fa-regular fa-trash-can"></i>
-            Remove Recipe
-          </button>
+        <div id="wednesday" class="card" style="width: 22rem; height: 9.5rem">
+          <div class="card-body">
+            <h6 class="card-title text-decoration-underline">Wednesday</h6>
+            <div class="row">
+              <p class="col-lg-9 card-text">
+                <span>Breakfast:</span>
+              </p>
+              <button
+                type="button"
+                class="col-lg-3 btn btn-outline-secondary justify-content-end"
+                style="
+                  --bs-btn-padding-y: 0.25rem;
+                  --bs-btn-padding-x: 0.5rem;
+                  --bs-btn-font-size: 0.75rem;
+                "
+              >
+                <i class="fa-regular fa-trash-can"></i>
+              </button>
+            </div>
+            <div class="row">
+              <p class="col-lg-9 card-text">
+                <span>Lunch:</span>
+              </p>
+              <button
+                type="button"
+                class="col-lg-3 btn btn-outline-secondary justify-content-end"
+                style="
+                  --bs-btn-padding-y: 0.25rem;
+                  --bs-btn-padding-x: 0.5rem;
+                  --bs-btn-font-size: 0.75rem;
+                "
+              >
+                <i class="fa-regular fa-trash-can"></i>
+              </button>
+            </div>
+            <div class="row">
+              <p class="col-lg-9 card-text">
+                <span>Dinner:</span>
+              </p>
+              <button
+                type="button"
+                class="col-lg-3 btn btn-outline-secondary justify-content-end"
+                style="
+                  --bs-btn-padding-y: 0.25rem;
+                  --bs-btn-padding-x: 0.5rem;
+                  --bs-btn-font-size: 0.75rem;
+                "
+              >
+                <i class="fa-regular fa-trash-can"></i>
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
-      <div
-        id="thursday"
-        class="card text-center"
-        style="width: 18rem; height: 8.5rem"
-      >
-        <div class="card-body">
-          <h5 class="card-title text-center text-decoration-underline">
-            Thursday
-          </h5>
-          <p class="card-text text-center">Hamburgers</p>
-          <button
-            type="button"
-            class="btn btn-dark"
-            style="
-              --bs-btn-padding-y: 0.25rem;
-              --bs-btn-padding-x: 0.5rem;
-              --bs-btn-font-size: 0.75rem;
-            "
-          >
-            <i class="fa-regular fa-trash-can"></i>
-            Remove Recipe
-          </button>
+        <div id="thursday" class="card" style="width: 22rem; height: 9.5rem">
+          <div class="card-body">
+            <h6 class="card-title text-decoration-underline">Thursday</h6>
+            <div class="row">
+              <p class="col-lg-9 card-text">
+                <span>Breakfast:</span>
+              </p>
+              <button
+                type="button"
+                class="col-lg-3 btn btn-outline-secondary justify-content-end"
+                style="
+                  --bs-btn-padding-y: 0.25rem;
+                  --bs-btn-padding-x: 0.5rem;
+                  --bs-btn-font-size: 0.75rem;
+                "
+              >
+                <i class="fa-regular fa-trash-can"></i>
+              </button>
+            </div>
+            <div class="row">
+              <p class="col-lg-9 card-text">
+                <span>Lunch:</span>
+              </p>
+              <button
+                type="button"
+                class="col-lg-3 btn btn-outline-secondary justify-content-end"
+                style="
+                  --bs-btn-padding-y: 0.25rem;
+                  --bs-btn-padding-x: 0.5rem;
+                  --bs-btn-font-size: 0.75rem;
+                "
+              >
+                <i class="fa-regular fa-trash-can"></i>
+              </button>
+            </div>
+            <div class="row">
+              <p class="col-lg-9 card-text">
+                <span>Dinner:</span>
+              </p>
+              <button
+                type="button"
+                class="col-lg-3 btn btn-outline-secondary justify-content-end"
+                style="
+                  --bs-btn-padding-y: 0.25rem;
+                  --bs-btn-padding-x: 0.5rem;
+                  --bs-btn-font-size: 0.75rem;
+                "
+              >
+                <i class="fa-regular fa-trash-can"></i>
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
-      <div
-        id="friday"
-        class="card text-center"
-        style="width: 18rem; height: 8.5rem"
-      >
-        <div class="card-body">
-          <h5 class="card-title text-center text-decoration-underline">
-            Friday
-          </h5>
-          <p class="card-text text-center">BBQ Ribs</p>
-          <button
-            type="button"
-            class="btn btn-dark"
-            style="
-              --bs-btn-padding-y: 0.2rem;
-              --bs-btn-padding-x: 0.5rem;
-              --bs-btn-font-size: 0.75rem;
-              --bs-btn-color: var(--bs-white);
-            "
-          >
-            <i class="fa-regular fa-trash-can"></i>
-            Remove Recipe
-          </button>
+        <div id="friday" class="card" style="width: 22rem; height: 9.5rem">
+          <div class="card-body">
+            <h6 class="card-title text-decoration-underline">Friday</h6>
+            <div class="row">
+              <p class="col-lg-9 card-text">
+                <span>Breakfast:</span>
+              </p>
+              <button
+                type="button"
+                class="col-lg-3 btn btn-outline-secondary justify-content-end"
+                style="
+                  --bs-btn-padding-y: 0.25rem;
+                  --bs-btn-padding-x: 0.5rem;
+                  --bs-btn-font-size: 0.75rem;
+                "
+              >
+                <i class="fa-regular fa-trash-can"></i>
+              </button>
+            </div>
+            <div class="row">
+              <p class="col-lg-9 card-text">
+                <span>Lunch:</span>
+              </p>
+              <button
+                type="button"
+                class="col-lg-3 btn btn-outline-secondary justify-content-end"
+                style="
+                  --bs-btn-padding-y: 0.25rem;
+                  --bs-btn-padding-x: 0.5rem;
+                  --bs-btn-font-size: 0.75rem;
+                "
+              >
+                <i class="fa-regular fa-trash-can"></i>
+              </button>
+            </div>
+            <div class="row">
+              <p class="col-lg-9 card-text">
+                <span>Dinner:</span>
+              </p>
+              <button
+                type="button"
+                class="col-lg-3 btn btn-outline-secondary justify-content-end"
+                style="
+                  --bs-btn-padding-y: 0.25rem;
+                  --bs-btn-padding-x: 0.5rem;
+                  --bs-btn-font-size: 0.75rem;
+                "
+              >
+                <i class="fa-regular fa-trash-can"></i>
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
-      <div
-        id="Saturday"
-        class="card text-center"
-        style="width: 18rem; height: 8.5rem"
-      >
-        <div class="card-body">
-          <h5 class="card-title text-center text-decoration-underline">
-            Saturday
-          </h5>
-          <p class="card-text text-center">Turkey Pot Pie</p>
-          <button
-            type="button"
-            class="btn btn-dark"
-            style="
-              --bs-btn-padding-y: 0.25rem;
-              --bs-btn-padding-x: 0.5rem;
-              --bs-btn-font-size: 0.75rem;
-            "
-          >
-            <i class="fa-regular fa-trash-can"></i>
-            Remove Recipe
-          </button>
+        <div id="saturday" class="card" style="width: 22rem; height: 9.5rem">
+          <div class="card-body">
+            <h6 class="card-title text-decoration-underline">Saturday</h6>
+            <div class="row">
+              <p class="col-lg-9 card-text">
+                <span>Breakfast:</span>
+              </p>
+              <button
+                type="button"
+                class="col-lg-3 btn btn-outline-secondary justify-content-end"
+                style="
+                  --bs-btn-padding-y: 0.25rem;
+                  --bs-btn-padding-x: 0.5rem;
+                  --bs-btn-font-size: 0.75rem;
+                "
+              >
+                <i class="fa-regular fa-trash-can"></i>
+              </button>
+            </div>
+            <div class="row">
+              <p class="col-lg-9 card-text">
+                <span>Lunch:</span>
+              </p>
+              <button
+                type="button"
+                class="col-lg-3 btn btn-outline-secondary justify-content-end"
+                style="
+                  --bs-btn-padding-y: 0.25rem;
+                  --bs-btn-padding-x: 0.5rem;
+                  --bs-btn-font-size: 0.75rem;
+                "
+              >
+                <i class="fa-regular fa-trash-can"></i>
+              </button>
+            </div>
+            <div class="row">
+              <p class="col-lg-9 card-text">
+                <span>Dinner:</span>
+              </p>
+              <button
+                type="button"
+                class="col-lg-3 btn btn-outline-secondary justify-content-end"
+                style="
+                  --bs-btn-padding-y: 0.25rem;
+                  --bs-btn-padding-x: 0.5rem;
+                  --bs-btn-font-size: 0.75rem;
+                "
+              >
+                <i class="fa-regular fa-trash-can"></i>
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
-      <div
-        id="sunday"
-        class="card text-center"
-        style="width: 18rem; height: 8.5rem"
-      >
-        <div class="card-body">
-          <h5 class="card-title text-center text-decoration-underline">
-            Sunday
-          </h5>
-          <p class="card-text text-center">Pizza</p>
-          <button
-            type="button"
-            class="btn btn-dark"
-            style="
-              --bs-btn-padding-y: 0.25rem;
-              --bs-btn-padding-x: 0.5rem;
-              --bs-btn-font-size: 0.75rem;
-            "
-          >
-            <i class="fa-regular fa-trash-can"></i>
-            Remove Recipe
-          </button>
+        <div id="sunday" class="card" style="width: 22rem; height: 9.5rem">
+          <div class="card-body">
+            <h6 class="card-title text-decoration-underline">Sunday</h6>
+            <div class="row">
+              <p class="col-lg-9 card-text">
+                <span>Breakfast:</span>
+              </p>
+              <button
+                type="button"
+                class="col-lg-3 btn btn-outline-secondary justify-content-end"
+                style="
+                  --bs-btn-padding-y: 0.25rem;
+                  --bs-btn-padding-x: 0.5rem;
+                  --bs-btn-font-size: 0.75rem;
+                "
+              >
+                <i class="fa-regular fa-trash-can"></i>
+              </button>
+            </div>
+            <div class="row">
+              <p class="col-lg-9 card-text">
+                <span>Lunch:</span>
+              </p>
+              <button
+                type="button"
+                class="col-lg-3 btn btn-outline-secondary justify-content-end"
+                style="
+                  --bs-btn-padding-y: 0.25rem;
+                  --bs-btn-padding-x: 0.5rem;
+                  --bs-btn-font-size: 0.75rem;
+                "
+              >
+                <i class="fa-regular fa-trash-can"></i>
+              </button>
+            </div>
+            <div class="row">
+              <p class="col-lg-9 card-text">
+                <span>Dinner:</span>
+              </p>
+              <button
+                type="button"
+                class="col-lg-3 btn btn-outline-secondary justify-content-end"
+                style="
+                  --bs-btn-padding-y: 0.25rem;
+                  --bs-btn-padding-x: 0.5rem;
+                  --bs-btn-font-size: 0.75rem;
+                "
+              >
+                <i class="fa-regular fa-trash-can"></i>
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
-    </aside>
-    <!-- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- -->
-    <!-- Lines 500+: Main/Search Bootstrap -->
-    <main>
-      <img />
-      <section id="search-box">
-        <form id="search-form"></form>
-        <input id="search-input" type="text" />
-        <select id="diet-input"></select>
-        <select id="health-input"></select>
-        <select id="cuisineType-input"></select>
-        <select id="mealType-input"></select>
-        <select id="dishType-input"></select>
-        <button id="search-button">Find recipes!</button>
-      </section>
-    </main>
-
-    <script src="./assets/js/script.js"></script>
+      </aside>
+    </div>
+
+    <div class="col-lg-10">
+      <main>
+        <header>
+          <h1 class="text-center">prepUrself</h1>
+        </header>
+        <img id="background-image" src="" />
+        <form id="search-form">
+          <div class="container">
+            <div class="row justify-content-around">
+              <select id="health" class="col-2">
+                <option value="none">Diet</option>
+                <option value="dairy-free">Dairy-Free</option>
+                <option value="gluten-free">Gluten-Free</option>
+                <option value="keto-friendly">Keto-Friendly</option>
+                <option value="paleo">Paleo</option>
+                <option value="vegan">Vegan</option>
+                <option value="vegetarian">Vegetarian</option>
+              </select>
+              <select id="cuisineType" class="col-2">
+                <option value="none">Cuisine</option>
+                <option value="american">American</option>
+                <option value="asian">Asian</option>
+                <option value="french">French</option>
+                <option value="indian">Indian</option>
+                <option value="italian">Italian</option>
+                <option value="mediterranean">Mediterranean</option>
+                <option value="mexican">Mexican</option>
+                <option value="middle eastern">Middle Eastern</option>
+                <option value="south american">South American</option>
+              </select>
+              <select id="mealType" class="col-2">
+                <option value="none">Meal</option>
+                <option value="breakfast">Breakfast</option>
+                <option value="brunch">Brunch</option>
+                <option value="lunch/dinner">Lunch/Dinner</option>
+                <option value="snack">Snack</option>
+              </select>
+              <select id="dishType" class="col-2">
+                <option value="none">Dish Type</option>
+                <option value="starter">Appetizer</option>
+                <option value="desserts">Desserts</option>
+                <option value="drinks">Drinks</option>
+                <option value="main course">Main Course</option>
+                <option value="pasta">Pasta</option>
+                <option value="pizza">Pizza</option>
+                <option value="salad">Salad</option>
+                <option value="sandwich">Sandwich</option>
+                <option value="side dish">Side Dish</option>
+                <option value="soup">Soup</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="search-bar" class="text-center align-items-center">
+            <input
+              id="q"
+              type="text"
+              placeholder="What to prep?"
+              class="col-4"
+            />
+            <button
+              type="button"
+              class="btn btn-primary btn-lg"
+              id="search-button"
+            >
+              Find recipes!
+            </button>
+          </div>
+        </form>
+      </main>
+    </div>
+    <footer class="text-center">asdfdas</footer>
   </body>
 </html>
