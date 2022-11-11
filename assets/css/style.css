@@ -64,13 +64,19 @@ option {
 }
 
 #search-results {
+  background-color: var(--blue);
   padding-top: 15px;
   padding-bottom: 15px;
   padding-right: 35px;
 }
 
-.recipeCard {
+div > .recipeCard {
+  background-color: var(--yellow);
   margin: 10px;
+}
+
+.recipeCard > li  >{
+  background-color: var(--green);
 }
 
 h5 {
