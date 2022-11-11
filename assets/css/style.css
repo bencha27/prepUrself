@@ -16,14 +16,17 @@ html {
   margin: 0 auto;
   padding: 0 auto !important;
 }
+
 .card {
   font-size: 0.8rem;
   font-weight: bold;
 }
+
 span {
   text-decoration: underline;
   padding-right: 10px;
 }
+
 h6 {
   font-size: 18px !important;
 }
@@ -52,4 +55,28 @@ option {
 #search-button {
   background-color: var(--green);
   color: var(--teal);
+}
+
+.card-img {
+  background-size: cover;
+  opacity: 0.1;
+  filter: sepia(90%) hue-rotate(190deg) saturate(800%);
+}
+
+#search-results {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 35px;
+}
+
+.recipe-card {
+  margin: 10px;
+}
+
+h5 {
+  color: black;
+}
+
+.card-text {
+  color: black;
 }
