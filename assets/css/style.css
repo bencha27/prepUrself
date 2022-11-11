@@ -2,16 +2,16 @@
   --teal: #37bbca;
   --blue: #0191b6;
   --yellow: #f9d80d;
-  --green: #d3de16;
+  --green: #79ca38;
   --orange: #ff7b17;
 }
 
 html {
-  background-color: var(--teal);
+  background-color: var(--blue);
 }
 
 .aside button {
-   display: flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   max-height: 19px;
@@ -32,7 +32,6 @@ html {
 .aside-card-title {
   font-family: "Marcellus", serif !important;
   font-size: 15px !important;
-  
 }
 
 .aside-card-text {
@@ -57,11 +56,11 @@ header {
   color: white;
   background-color: var(--blue);
   font-family: "Marcellus", serif;
-  padding-bottom: 10px;
 }
 
 h1 {
   font-size: 55px !important;
+  margin-bottom: 0px;
 }
 
 select {
@@ -80,7 +79,7 @@ option {
 
 #search-button {
   background-color: var(--green);
-  color: var(--teal);
+  color: var(--blue);
 }
 
 .card-img {
@@ -101,7 +100,7 @@ div > .recipeCard {
   margin: 10px;
 }
 
-.recipeCard > li  >{
+.recipeCard > li > {
   background-color: var(--green);
 }
 
