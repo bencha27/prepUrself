@@ -1,19 +1,4 @@
-// Pull random photo from API into img element
-function getPhotoApi() {
-    var requestPhotoUrl = "https://foodish-api.herokuapp.com/api/"
-
-    fetch(requestPhotoUrl)
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (data) {
-        var backgroundImage = document.getElementById("background-image");
-        backgroundImage.setAttribute("src", data.image);
-    })    
-}
-
-// getPhotoApi();
-
+// ELEMENT POINTERS
 //form
 var searchFormEl = $("#search-form");
 var selectionsEl = $("#selections");
@@ -21,8 +6,10 @@ var searchInputEl = $("#q");
 var searchButtonEl = $("#search-button");
 var searchBarEl = $("#search-bar");
 //results
-var resultsContainerEl = $("resultsContainer");
-var searchResultsEl = $("");
+var resultsContainerEl = $("search-results-container");
+var searchResultsEl = $("search-results");
+// js DOM used for loadHomePage() function
+var resultsJS = document.getElementById("search-results-container");
 // aside
 var scheduleEl = $("#schedule");
 var mondayEl = $("#monday");
@@ -32,6 +19,24 @@ var thursdayEl = $("#thursday");
 var fridayEl = $("#friday");
 var saturdayEl = $("#Saturday");
 var sundayEl = $("#sunday");
+
+loadHomePage();
+
+// Pull random photo from API into img element
+function getPhotoApi() {
+  var requestPhotoUrl = "https://foodish-api.herokuapp.com/api/";
+
+  fetch(requestPhotoUrl)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      var backgroundImage = document.getElementById("background-image");
+      backgroundImage.setAttribute("src", data.image);
+    });
+}
+
+// getPhotoApi();
 
 //examples
 //https://api.edamam.com/api/recipes/v2?type=public&q=chicken&app_id=0b97683e&app_key=8b9f9e545d235c4ae37ac9cbb16a65a5&diet=low-carb
@@ -46,9 +51,9 @@ var edamamEndpoint =
 // runs when DOM is ready
 $(function () {
   // load the home page on landing
-  // loadHomePage();
+  // ^^ is now below the element pointers (line 20ish)
 
-  // listen for user to search
+  // listen for user to enter search
   searchFormEl.on("submit", loadResultsPage);
   searchButtonEl.on("click", loadResultsPage);
 
@@ -61,8 +66,7 @@ $(function () {
 
 function loadHomePage() {
   $(searchBarEl).css({ "margin-top": "350px" });
-  // $(resultsContainerEl).hide();
-  // $(resultsContainerEl).css("display", "none");
+  resultsJS.style.display = "none";
 }
 
 // -------- RESULTS PAGE ---------------
@@ -75,15 +79,15 @@ function loadResultsPage(event) {
 
   // query data
   var apiObject = ajaxQueryData(event);
-  console.log(apiObject);
+  // console.log(apiObject);
 
   // fill results
-  // fillSearchResults(apiObject);
+  fillSearchResults(apiObject);
 }
 
 function positionResultsPage() {
   $(searchBarEl).css({ "margin-top": "20px" });
-  $(resultsContainerEl).show();
+  resultsJS.style.display = "block";
 }
 
 function ajaxQueryData(event) {
@@ -130,15 +134,31 @@ function ajaxQueryData(event) {
   return storeResults;
 }
 
-// var fillSearchResults = function (results) {
-//   // For each card in #search-results
-//   var cardNumber = 0;
-//   $(searchResultsEl)
-//     .children()
-//     .each(function () {
-//       cardNumber++;
-//     });
-// };
+var fillSearchResults = function (results) {
+  // create cardInfo Objects using the API data
+  // fill object list
+  var recipeInfoObjects = [];
+
+  for (var i = 0; i < results.length; i++) {
+    var recipeInfo = {};
+    recipeInfo["label"] = results[i].recipe.label;
+    recipeInfo["imgURL"] = results[i].recipe.image;
+    recipeInfo["recipeURL"] = results[i].recipe.url;
+    recipeInfoObjects.push(recipeInfo);
+    // console.log(recipeInfo);
+  }
+  console.log(recipeInfoObjects);
+
+  // fill recipe cards
+  // For each card in #search-results
+  // var cardNumber = 0;
+  // $(searchResultsEl)
+  //   .children()
+  //   .each(function () {
+  //     cardNumber++;
+  //   });
+};
+
 // RESULTS PAGE END
 
 // -----------------------------------
