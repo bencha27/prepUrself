@@ -11,10 +11,33 @@ html {
 }
 
 .aside button {
-  max-height: 25px;
-  max-width: 30px;
-  margin: 0 auto;
-  padding: 0 auto !important;
+   display: flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 19px;
+  max-width: 19px;
+  margin-left: 47px;
+  padding: 4px !important;
+  /* background-color: #37bbca; */
+  color: black;
+}
+
+.aside-card {
+  height: 14.28vh !important;
+  width: 100% !important;
+  min-height: 130px !important;
+  min-width: 275px !important;
+}
+
+.aside-card-title {
+  font-family: "Marcellus", serif !important;
+  font-size: 15px !important;
+  
+}
+
+.aside-card-text {
+  font-size: 10px;
+  
 }
 
 .card {
