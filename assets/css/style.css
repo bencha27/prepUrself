@@ -11,7 +11,7 @@ html {
 }
 
 .aside button {
-   display: flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   max-height: 19px;
@@ -20,6 +20,7 @@ html {
   padding: 4px !important;
   /* background-color: #37bbca; */
   color: black;
+  font-size: 10px;
 }
 
 .aside-card {
@@ -32,12 +33,10 @@ html {
 .aside-card-title {
   font-family: "Marcellus", serif !important;
   font-size: 15px !important;
-  
 }
 
 .aside-card-text {
   font-size: 10px;
-  
 }
 
 .card {
@@ -73,6 +72,7 @@ option {
 
 #search-bar {
   margin-top: 350px;
+  margin-bottom: 20px;
 }
 
 #search-button {
@@ -83,7 +83,7 @@ option {
 .card-img {
   background-size: cover;
   opacity: 0.1;
-  filter: sepia(90%) hue-rotate(190deg) saturate(800%);
+  filter: sepia(100%) hue-rotate(220dg) saturate(900%);
 }
 
 #search-results {
