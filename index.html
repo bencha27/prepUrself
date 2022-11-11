@@ -13,10 +13,7 @@
       integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
       crossorigin="anonymous"
     />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet" />
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
       integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
@@ -417,7 +414,7 @@
         <img id="background-image" src="" />
         <form id="search-form">
           <div class="container">
-            <div class="row justify-content-around">
+            <div id="selections" class="row justify-content-around">
               <select id="health" class="col-2">
                 <option value="none">Diet</option>
                 <option value="dairy-free">Dairy-Free</option>
@@ -463,17 +460,8 @@
           </div>
 
           <div id="search-bar" class="text-center align-items-center">
-            <input
-              id="q"
-              type="text"
-              placeholder="What to prep?"
-              class="col-4"
-            />
-            <button
-              type="button"
-              class="btn btn-primary btn-lg"
-              id="search-button"
-            >
+            <input id="q" type="text" placeholder="What to prep?" class="col-4" />
+            <button type="button" class="btn btn-primary btn-lg" id="search-button">
               Find recipes!
             </button>
           </div>
@@ -481,5 +469,6 @@
       </main>
     </div>
     <footer class="text-center">asdfdas</footer>
+    <script src="./assets/js/script.js"></script>
   </body>
 </html>
