@@ -20,6 +20,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+    <script src="https://developer.edamam.com/attribution/badge.js"></script>
   </head>
 
   <div
@@ -27,8 +28,7 @@
     id="modal"
     tabindex="-1"
     aria-labelledby="modalLabel"
-    aria-hidden="true"
-  >
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
@@ -57,7 +57,7 @@
   </div>
 
   <body class="row">
-    <div class="col-lg-2">
+    <div class="col-lg-2 p-0">
       <aside class="aside">
         <div id="monday" class="card" style="width: 18rem; height: 9.5rem">
           <div class="card-body">
@@ -433,11 +433,11 @@
         </div>
       </aside>
     </div>
-
     <div class="col-lg-10 p-0">
       <main>
         <header>
-          <h1 class="text-center">prepUrself</h1>
+          <h1 class="text-center">prepUrself <i class="fa-solid fa-utensils fa-xs"></i></h1>
+          <h2 id="edamam-badge" class="text-center" data-color="transparent"></h2>
         </header>
         <div class="card text-bg-dark">
           <img

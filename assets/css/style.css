@@ -31,11 +31,15 @@ h6 {
   font-size: 18px !important;
 }
 
-h1 {
+header {
   color: white;
   background-color: var(--blue);
   font-family: "Marcellus", serif;
   padding-bottom: 10px;
+}
+
+h1 {
+  font-size: 55px !important;
 }
 
 select {
