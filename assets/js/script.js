@@ -6,8 +6,8 @@ var searchInputEl = $("#q");
 var searchButtonEl = $("#search-button");
 var searchBarEl = $("#search-bar");
 //results
-var resultsContainerEl = $("search-results-container");
-var searchResultsEl = $("search-results");
+var resultsContainerEl = $("#search-results-container");
+var searchResultsEl = $("#search-results");
 // js DOM used for loadHomePage() function
 var resultsJS = document.getElementById("search-results-container");
 // aside
@@ -79,7 +79,7 @@ function loadResultsPage(event) {
 
   // query data
   var apiObject = ajaxQueryData(event);
-  // console.log(apiObject);
+  console.log(apiObject);
 
   // fill results
   fillSearchResults(apiObject);
@@ -147,16 +147,37 @@ var fillSearchResults = function (results) {
     recipeInfoObjects.push(recipeInfo);
     // console.log(recipeInfo);
   }
-  console.log(recipeInfoObjects);
+  // console.log(recipeInfoObjects);
 
   // fill recipe cards
-  // For each card in #search-results
-  // var cardNumber = 0;
-  // $(searchResultsEl)
-  //   .children()
-  //   .each(function () {
-  //     cardNumber++;
-  //   });
+  // For each card in #search-results - DOM tree refrence bellow
+  var cardNumber = 0;
+  $(searchResultsEl)
+    .children()
+    .each(function () {
+      $(this).children("div").children("img").attr("src", recipeInfoObjects[cardNumber].imgURL);
+
+      $(this)
+        .children("div")
+        .children("div")
+        .children("h5")
+        .text(recipeInfoObjects[cardNumber].label);
+
+      $(this)
+        .children("div")
+        .children("div")
+        .children("ul")
+        .children("li")
+        .children("a")
+        .eq(1)
+        .attr({
+          href: recipeInfoObjects[cardNumber].recipeURL,
+          target: "_blank",
+          rel: "noreferrer noopener",
+        });
+
+      cardNumber++;
+    });
 };
 
 // RESULTS PAGE END
