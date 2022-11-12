@@ -18,8 +18,13 @@ html {
   max-width: 19px;
   margin-left: 47px;
   padding: 4px !important;
-  /* background-color: #37bbca; */
-  color: black;
+  background-color: #ca3737;
+  color: white;
+  font-size: 10px;
+}
+
+.bgImage {
+  border-radius: 0 !important;
 }
 
 .aside-card {
@@ -27,15 +32,26 @@ html {
   width: 100% !important;
   min-height: 130px !important;
   min-width: 275px !important;
+  border: 2px solid white !important;
 }
 
 .aside-card-title {
-  font-family: "Marcellus", serif !important;
+  font-family: "Inter", sans-serif !important;
+  font-weight: bolder !important;
   font-size: 15px !important;
+  color: var(--blue);
+  text-shadow: 0.05em 0 white, 0 0.05em white, -0.05em 0 white, 0 -0.05em white !important;
 }
 
 .aside-card-text {
   font-size: 10px;
+  color: white !important;
+  font-family: "Viga", sans-serif !important;
+}
+
+aside > .card {
+  background-color: var(--orange);
+  border-radius: 0 !important;
 }
 
 .card {
@@ -44,7 +60,6 @@ html {
 }
 
 span {
-  text-decoration: underline;
   padding-right: 10px;
 }
 
@@ -56,6 +71,9 @@ header {
   color: white;
   background-color: var(--blue);
   font-family: "Marcellus", serif;
+  border-bottom: 2px solid white !important;
+  border-top: 2px solid white !important;
+  border-right: 2px solid white !important;
 }
 
 h1 {
@@ -67,6 +85,8 @@ select {
   background-color: var(--orange);
   border-color: var(--blue);
   border-radius: 10px;
+  color: white;
+  font-family: "Inter", sans-serif !important;
 }
 
 option {
@@ -75,6 +95,7 @@ option {
 
 #search-bar {
   margin-top: 350px;
+  margin-bottom: 20px;
 }
 
 #search-button {
@@ -85,7 +106,7 @@ option {
 .card-img {
   background-size: cover;
   opacity: 0.1;
-  filter: sepia(90%) hue-rotate(190deg) saturate(800%);
+  filter: sepia(100%) hue-rotate(220dg) saturate(900%);
 }
 
 #search-results {
@@ -98,10 +119,6 @@ option {
 div > .recipeCard {
   background-color: var(--yellow);
   margin: 10px;
-}
-
-.recipeCard > li > {
-  background-color: var(--green);
 }
 
 h5 {
