@@ -182,6 +182,35 @@ var fillSearchResults = function (results) {
 
 // RESULTS PAGE END
 
+//MODAL SCRIPT
+
+function modal() {
+
+  var dialog = $( "#dialog-form" ).dialog({
+    autoOpen: false,
+    height: 400,
+    width: 350,
+    modal: true,
+    buttons: {
+      "Add to planner": addUser,
+      Cancel: function() {
+        dialog.dialog( "close" );
+      }
+    },
+  });
+
+  $("#add-recipe").button().on( "click", function() {
+    dialog.dialog( "open" );
+  });
+
+  // ADDING TO ASIDE
+  // var form = dialog.find( "form" ).on( "submit", function( event ) {
+  //   event.preventDefault();
+  //   addUser();
+  // });
+} ;
+
+
 // -----------------------------------
 
 // --------CALENDAR PAGE-------------
