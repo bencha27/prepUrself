@@ -76,6 +76,10 @@ header {
   border-right: 2px solid white !important;
 }
 
+#page-header:pointer {
+  curser: pointer;
+}
+
 h1 {
   font-size: 55px !important;
   margin-bottom: 0px;
