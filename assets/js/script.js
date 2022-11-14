@@ -23,7 +23,9 @@ var saturdayEl = $("#Saturday");
 var sundayEl = $("#sunday");
 // modal widget
 var dialog, form;
-var cardInfos;
+
+var addRecipeButton;
+var loadedRecipeObjects;
 
 loadHomePage();
 
@@ -69,8 +71,8 @@ function loadResultsPage(event) {
   var apiObject = ajaxQueryData(event);
   // console.log(apiObject);
 
-  // fill and store results
-  cardInfos = fillSearchResults(apiObject);
+  // clear, fill, and store results
+  fillSearchResults(apiObject);
 }
 
 function positionResultsPage() {
@@ -119,43 +121,32 @@ function ajaxQueryData(event) {
       storeResults = result.hits;
     },
   });
+
   return storeResults;
 }
 
 var fillSearchResults = function (results) {
   // create cardInfo Objects using the API data
-  // fill object list
-  var recipeInfoObjects = [];
+  // clear results
+  loadedRecipeObjects = [];
 
-  // for (var i = 0; i < results.length; i++) {
-  //   if (results[i].recipe.totalTime !== 0) {
-  //     var recipeInfo = {};
-  //     recipeInfo["label"] = results[i].recipe.label;
-  //     recipeInfo["imgURL"] = results[i].recipe.image;
-  //     recipeInfo["recipeURL"] = results[i].recipe.url;
-  //     recipeInfo["time"] = results[i].recipe.totalTime;
-  //     recipeInfo["calories"] = results[i].recipe.calories;
-  //     recipeInfoObjects.push(recipeInfo);
-  //     // console.log(recipeInfo);
-  //   }
-  // }
-
-  // fill recipe cards
   // For each card in #search-results - DOM tree refrence bellow
   var cardNumber = 0;
   // console.log(cardNumber);
   $(searchResultsEl)
     .children()
     .each(function () {
+      // store results
       var recipeInfo = {};
       recipeInfo["label"] = results[cardNumber].recipe.label;
       recipeInfo["imgURL"] = results[cardNumber].recipe.image;
       recipeInfo["recipeURL"] = results[cardNumber].recipe.url;
       recipeInfo["time"] = results[cardNumber].recipe.totalTime;
       recipeInfo["calories"] = results[cardNumber].recipe.calories;
-      recipeInfoObjects.push(recipeInfo);
+      loadedRecipeObjects.push(recipeInfo);
 
-      $(this).children("div").children("img").attr("src", recipeInfoObjects[cardNumber].imgURL);
+      // fill recipe cards
+      $(this).children("div").children("img").attr("src", loadedRecipeObjects[cardNumber].imgURL);
 
       // console.log($(this).children("div").children("div"));
 
@@ -163,7 +154,7 @@ var fillSearchResults = function (results) {
         .children("div")
         .children("div")
         .children("h5")
-        .text(recipeInfoObjects[cardNumber].label);
+        .text(loadedRecipeObjects[cardNumber].label);
 
       $(this)
         .children("div")
@@ -173,7 +164,7 @@ var fillSearchResults = function (results) {
         .children("a")
         .eq(0)
         .attr({
-          href: recipeInfoObjects[cardNumber].recipeURL,
+          href: loadedRecipeObjects[cardNumber].recipeURL,
           target: "_blank",
           rel: "noreferrer noopener",
         });
@@ -184,7 +175,7 @@ var fillSearchResults = function (results) {
         .children("ul")
         .children("li")
         .eq(1)
-        .text("Time to make: " + recipeInfoObjects[cardNumber].time);
+        .text("Time to make: " + loadedRecipeObjects[cardNumber].time);
 
       $(this)
         .children("div")
@@ -192,7 +183,7 @@ var fillSearchResults = function (results) {
         .children("ul")
         .children("li")
         .eq(2)
-        .text("Calories: " + Math.round(recipeInfoObjects[cardNumber].calories));
+        .text("Calories: " + Math.round(loadedRecipeObjects[cardNumber].calories));
 
       // $(this)
       //   .children("div")
@@ -201,16 +192,12 @@ var fillSearchResults = function (results) {
       //   .on("click", addToLocal($(this)));
       cardNumber++;
     });
-  // console.log(recipeInfoObjects);
-  return recipeInfoObjects;
-};
-
-var addToLocal = function (recipeCard) {
-  console.log(recipeCard);
 };
 
 function addRecipe() {
-  console.log("add user");
+  // console.log(addRecipeButton);
+  // store button id
+  loadedRecipeObjects[buttonID].week
 
   // close modal when submited
   dialog.dialog("close");
@@ -219,27 +206,33 @@ function addRecipe() {
 // main (listen for page inputs)
 // runs when DOM is ready
 $(function () {
-  // load the home page on landing
-  // ^^ is now below the element pointers (line 20ish)
-
   // listen for user to enter search
   searchFormEl.on("submit", loadResultsPage);
   searchButtonEl.on("click", loadResultsPage);
-  // console.log($(searchResultsEl).children().children("div").children("div").children("button"));
 
-  var addRecipeButton;
+  // modal widget
   dialog = $("#dialog-form").dialog({
     dialogClass: "calendarSubmitForm",
     autoOpen: false,
     height: 400,
     width: 350,
     modal: true,
-    buttons: {
-      "Create an account": addRecipe,
-      Cancel: function () {
-        dialog.dialog("close");
+    buttons: [
+      {
+        text: "Add to Planner!",
+        class: "modalButtons",
+        click: function () {
+          addRecipe();
+        },
       },
-    },
+      {
+        text: "Cancel",
+        class: "modalButtons",
+        click: function () {
+          dialog.dialog("close");
+        },
+      },
+    ],
     close: function () {
       form[0].reset();
     },
