@@ -181,6 +181,7 @@ var fillSearchResults = function (results) {
         .eq(2)
         .text("Calories: " + recipeInfoObjects[cardNumber].calories);
 
+      // $(this).children("div").children("div").children("select").addEventListener("click");
       cardNumber++;
     });
   return recipeInfoObjects;
@@ -189,9 +190,9 @@ var fillSearchResults = function (results) {
 // results = array of objects
 // results[0] = { recipe:{...}, _links{...} }
 // results[0].recipe = { ... }
-
 // RESULTS PAGE END
 
+// NOTES
 // form = dialog.find("form").on("submit", function (event) {
 //   event.preventDefault();
 //   addUser();
@@ -202,6 +203,9 @@ var fillSearchResults = function (results) {
 //   .on("click", function () {
 //     dialog.dialog("open");
 //   });
+// for (let i = 0; i < PerformanceServerTiming.length; i++) {
+//     preSet[i].addEventListener("click");
+//   }
 
 // main (listen for page inputs)
 // runs when DOM is ready
