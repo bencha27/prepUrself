@@ -25,7 +25,7 @@
   </head>
 
   <body class="row">
-    <div class="col-lg-2 p-0 p-0">
+    <div class="col-lg-2 col-md-4 col-sm-4 p-0 p-0">
       <aside class="aside">
         <div id="monday" class="card aside-card" style="width: 18rem; height: 9.5rem">
           <div class="card-body">
@@ -401,7 +401,7 @@
         </div>
       </aside>
     </div>
-    <div class="col-lg-10 p-0 p-0">
+    <div class="col-lg-10 col-md-8 col-sm-8 p-0 p-0">
       <main>
         <header>
           <h1 class="text-center m-0">prepUrself <i class="fa-solid fa-utensils fa-xs"></i></h1>
@@ -409,9 +409,10 @@
         </header>
         <div class="card text-bg-dark bgImage">
           <img
-            src="https://plus.unsplash.com/premium_photo-1663840344687-a91e96693fde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fGZvb2R8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60"
+          id="background-image"
+            src=""
             class="card-img bgImage"
-            alt="..."
+            alt="random food image"
           />
           <div class="card-img-overlay">
             <form id="search-form">
@@ -485,45 +486,48 @@
                     <div class="card-body">
                       <h5 class="card-title">Recipe 1</h5>
                       <p class="card-text">
-                        <ul>
-                          <li class="list-group-item" ><a href="#">Ingredients</a></li>
-                          <li class="list-group-item" ><a href="#">Step by Step</a></li>
-                          <li class="list-group-item" ><a href="#">???</a></li>
+                        <ul >
+                          <li class="list-group-item" ><a href="#">Instructions</a></li>
+                          <li class="list-group-item" >Time to make:</li>
+                          <li class="list-group-item" >Calories:</li>
                         </ul>
                       </p>
-                      <select id="choose-day">
-                        <option value="none">Choose a day</option>
-                        <option value="monday">Monday</option>
-                        <option value="tuesday">Tuesday</option>
-                        <option value="wednesday">Wednesday</option>
-                        <option value="thursday">Thursday</option>
-                        <option value="friday">Friday</option>
-                        <option value="saturday">Saturday</option>
-                      </select>
+                     <button id="add-recipe" class="addBtn">Add Recipe to Meal Plan!</button>
+                 
                     </div>
                   </div>
                 </div>
-                <div class="col-3">
+                 <div class="col-3">
                   <div class="card recipeCard" style="width: 16rem">
-                    <img src="..." class="card-img-top" alt="..." />
+                    <img src="" class="card-img-top" alt="..." />
                     <div class="card-body">
-                      <h5 class="card-title">Recipe 2</h5>
+                      <h5 class="card-title">Recipe 1</h5>
                       <p class="card-text">
-                        <ul>
-                          <li class="list-group-item" ><a href="#">Ingredients</a></li>
-                          <li class="list-group-item" ><a href="#">Step by Step</a></li>
-                          <li class="list-group-item" ><a href="#">???</a></li>
+                        <ul style="justify-content: flex-start">
+                          <li class="list-group-item" ><a href="#">Instructions</a></li>
+                          <li class="list-group-item" >Time to make:</li>
+                          <li class="list-group-item" >Calories:</li>
                         </ul>
                       </p>
-                      <select id="choose-day">
-                        <option value="none">Choose a day</option>
-                        <option value="monday">Monday</option>
-                        <option value="tuesday">Tuesday</option>
-                        <option value="wednesday">Wednesday</option>
-                        <option value="thursday">Thursday</option>
-                        <option value="friday">Friday</option>
-                        <option value="saturday">Saturday</option>
-                      </select>
+                     <button id="add-recipe" class="addBtn">Add Recipe to Meal Plan!</button>
+                 
+                    </div>
+                  </div>
+                </div>
+                 <div class="col-3">
+                  <div class="card recipeCard" style="width: 16rem">
+                    <img src="" class="card-img-top" alt="..." />
+                    <div class="card-body">
+                      <h5 class="card-title">Recipe 1</h5>
+                      <p class="card-text">
+                        <ul style="justify-content: flex-start">
+                          <li class="list-group-item" ><a href="#">Instructions</a></li>
+                          <li class="list-group-item" >Time to make:</li>
+                          <li class="list-group-item" >Calories:</li>
+                        </ul>
+                      </p>
+                     <button id="add-recipe" class="addBtn">Add Recipe to Meal Plan!</button>
+                 
                     </div>
                   </div>
                 </div>
@@ -531,71 +535,84 @@
                   <div class="card recipeCard" style="width: 16rem">
                     <img src="" class="card-img-top" alt="..." />
                     <div class="card-body">
-                      <h5 class="card-title">Recipe 3</h5>
+                      <h5 class="card-title">Recipe 1</h5>
                       <p class="card-text">
-                        <ul>
-                          <li class="list-group-item" ><a href="#">Ingredients</a></li>
-                          <li class="list-group-item" ><a href="#">Step by Step</a></li>
-                          <li class="list-group-item" ><a href="#">???</a></li>
+                        <ul style="justify-content: flex-start">
+                          <li class="list-group-item" ><a href="#">Instructions</a></li>
+                          <li class="list-group-item" >Time to make:</li>
+                          <li class="list-group-item" >Calories:</li>
                         </ul>
                       </p>
-                      <select id="choose-day">
-                        <option value="none">Choose a day</option>
-                        <option value="monday">Monday</option>
-                        <option value="tuesday">Tuesday</option>
-                        <option value="wednesday">Wednesday</option>
-                        <option value="thursday">Thursday</option>
-                        <option value="friday">Friday</option>
-                        <option value="saturday">Saturday</option>
-                      </select>
+                     <button id="add-recipe" class="addBtn">Add Recipe to Meal Plan!</button>
+                 
                     </div>
                   </div>
                 </div>
-                <div class="col-3">
+                 <div class="col-3">
                   <div class="card recipeCard" style="width: 16rem">
-                    <img src="..." class="card-img-top" alt="..." />
+                    <img src="" class="card-img-top" alt="..." />
                     <div class="card-body">
-                      <h5 class="card-title">Recipe 4</h5>
+                      <h5 class="card-title">Recipe 1</h5>
                       <p class="card-text">
-                        <ul>
-                          <li class="list-group-item" ><a href="#">Ingredients</a></li>
-                          <li class="list-group-item" ><a href="#">Step by Step</a></li>
-                          <li class="list-group-item" ><a href="#">???</a></li>
+                        <ul style="justify-content: flex-start">
+                          <li class="list-group-item" ><a href="#">Instructions</a></li>
+                          <li class="list-group-item" >Time to make:</li>
+                          <li class="list-group-item" >Calories:</li>
                         </ul>
                       </p>
-                      <select id="choose-day">
-                        <option value="none">Choose a day</option>
-                        <option value="monday">Monday</option>
-                        <option value="tuesday">Tuesday</option>
-                        <option value="wednesday">Wednesday</option>
-                        <option value="thursday">Thursday</option>
-                        <option value="friday">Friday</option>
-                        <option value="saturday">Saturday</option>
-                      </select>
+                     <button id="add-recipe" class="addBtn">Add Recipe to Meal Plan!</button>
+                 
+                    </div>
+                  </div>
+                 </div>
+                 <div class="col-3">
+                  <div class="card recipeCard" style="width: 16rem">
+                    <img src="" class="card-img-top" alt="..." />
+                    <div class="card-body">
+                      <h5 class="card-title">Recipe 1</h5>
+                      <p class="card-text">
+                        <ul style="justify-content: flex-start">
+                          <li class="list-group-item" ><a href="#">Instructions</a></li>
+                          <li class="list-group-item" >Time to make:</li>
+                          <li class="list-group-item" >Calories:</li>
+                        </ul>
+                      </p>
+                     <button id="add-recipe" class="addBtn">Add Recipe to Meal Plan!</button>
+                 
                     </div>
                   </div>
                 </div>
-                <div class="col-3">
+                 <div class="col-3">
                   <div class="card recipeCard" style="width: 16rem">
-                    <img src="..." class="card-img-top" alt="..." />
+                    <img src="" class="card-img-top" alt="..." />
                     <div class="card-body">
-                      <h5 class="card-title">Recipe 5</h5>
+                      <h5 class="card-title">Recipe 1</h5>
                       <p class="card-text">
-                        <ul>
-                          <li class="list-group-item" ><a href="#">Ingredients</a></li>
-                          <li class="list-group-item" ><a href="#">Step by Step</a></li>
-                          <li class="list-group-item" ><a href="#">???</a></li>
+                        <ul style="justify-content: flex-start">
+                          <li class="list-group-item" ><a href="#">Instructions</a></li>
+                          <li class="list-group-item" >Time to make:</li>
+                          <li class="list-group-item" >Calories:</li>
                         </ul>
                       </p>
-                      <select id="choose-day">
-                        <option value="none">Choose a day</option>
-                        <option value="monday">Monday</option>
-                        <option value="tuesday">Tuesday</option>
-                        <option value="wednesday">Wednesday</option>
-                        <option value="thursday">Thursday</option>
-                        <option value="friday">Friday</option>
-                        <option value="saturday">Saturday</option>
-                      </select>
+                     <button id="add-recipe" class="addBtn">Add Recipe to Meal Plan!</button>
+                 
+                    </div>
+                  </div>
+                </div>
+                 <div class="col-3">
+                  <div class="card recipeCard" style="width: 16rem">
+                    <img src="" class="card-img-top" alt="..." />
+                    <div class="card-body">
+                      <h5 class="card-title">Recipe 1</h5>
+                      <p class="card-text">
+                        <ul style="justify-content: flex-start">
+                          <li class="list-group-item" ><a href="#">Instructions</a></li>
+                          <li class="list-group-item" >Time to make:</li>
+                          <li class="list-group-item" >Calories:</li>
+                        </ul>
+                      </p>
+                     <button id="add-recipe" class="addBtn">Add Recipe to Meal Plan!</button>
+                 
                     </div>
                   </div>
                 </div>
@@ -628,7 +645,8 @@
       </main>
     </div>
     <footer class="text-center">Brought to you by For Lack of A Better Team Name👾</footer>
+    <script src="./assets/js/script.js"></script>
   </body>
-  <script src="./assets/js/script.js"></script>
+  
 </html>
 

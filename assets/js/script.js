@@ -36,7 +36,7 @@ function getPhotoApi() {
     });
 }
 
-// getPhotoApi();
+getPhotoApi();
 
 //examples
 //https://api.edamam.com/api/recipes/v2?type=public&q=chicken&app_id=0b97683e&app_key=8b9f9e545d235c4ae37ac9cbb16a65a5&diet=low-carb
@@ -99,7 +99,11 @@ function ajaxQueryData(event) {
     .children()
     .each(function () {
       // If the option($(this)) has a value than add it to the paramater object
-      if ($(this).val() != "" && $(this).val() != null && $(this).val() != "none") {
+      if (
+        $(this).val() != "" &&
+        $(this).val() != null &&
+        $(this).val() != "none"
+      ) {
         var inputID = $(this).attr("id");
         var inputValue = $(this).val();
         // use options id and value as key pairs for parameters
@@ -155,7 +159,10 @@ var fillSearchResults = function (results) {
   $(searchResultsEl)
     .children()
     .each(function () {
-      $(this).children("div").children("img").attr("src", recipeInfoObjects[cardNumber].imgURL);
+      $(this)
+        .children("div")
+        .children("img")
+        .attr("src", recipeInfoObjects[cardNumber].imgURL);
 
       $(this)
         .children("div")
