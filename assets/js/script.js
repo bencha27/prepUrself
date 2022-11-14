@@ -38,7 +38,7 @@ function getPhotoApi() {
     });
 }
 
-// getPhotoApi();
+getPhotoApi();
 
 //examples
 //https://api.edamam.com/api/recipes/v2?type=public&q=chicken&app_id=0b97683e&app_key=8b9f9e545d235c4ae37ac9cbb16a65a5&diet=low-carb
@@ -144,7 +144,7 @@ var fillSearchResults = function (results) {
     .each(function () {
       $(this).children("div").children("img").attr("src", recipeInfoObjects[cardNumber].imgURL);
 
-      console.log($(this).children("div").children("div").children("ul").children("li").eq(1));
+      console.log($(this).children("div").children("div"));
 
       $(this)
         .children("div")
@@ -181,11 +181,20 @@ var fillSearchResults = function (results) {
         .eq(2)
         .text("Calories: " + recipeInfoObjects[cardNumber].calories);
 
-      // $(this).children("div").children("div").children("select").addEventListener("click");
+      // $(this)
+      //   .children("div")
+      //   .children("div")
+      //   .children("button")
+      //   .on("click", addToLocal($(this)));
       cardNumber++;
     });
   return recipeInfoObjects;
 };
+
+var addToLocal = function (recipeCard) {
+  console.log(recipeCard);
+};
+
 // DOM reference
 // results = array of objects
 // results[0] = { recipe:{...}, _links{...} }
@@ -207,6 +216,24 @@ var fillSearchResults = function (results) {
 //     preSet[i].addEventListener("click");
 //   }
 
+function addUser() {
+  // $("#users tbody").append(
+  //   "<tr>" +
+  //     "<td>" +
+  //     name.val() +
+  //     "</td>" +
+  //     "<td>" +
+  //     email.val() +
+  //     "</td>" +
+  //     "<td>" +
+  //     password.val() +
+  //     "</td>" +
+  //     "</tr>"
+  // );
+  console.log("add user");
+  // dialog.dialog("close");
+}
+
 // main (listen for page inputs)
 // runs when DOM is ready
 $(function () {
@@ -216,7 +243,41 @@ $(function () {
   // listen for user to enter search
   searchFormEl.on("submit", loadResultsPage);
   searchButtonEl.on("click", loadResultsPage);
+  // console.log($(searchResultsEl).children().children("div").children("div").children("button"));
 
+  var dialog, form;
+
+  dialog = $("#dialog-form").dialog({
+    dialogClass: "calendarSubmitForm",
+    autoOpen: false,
+    height: 400,
+    width: 350,
+    modal: true,
+    buttons: {
+      "Create an account": addUser,
+      Cancel: function () {
+        dialog.dialog("close");
+      },
+    },
+    close: function () {
+      form[0].reset();
+      allFields.removeClass("ui-state-error");
+    },
+  });
+
+  $(searchResultsEl)
+    .children()
+    .children("div")
+    .children("div")
+    .children("button")
+    .on("click", function () {
+      dialog.dialog("open");
+    });
+
+  form = dialog.children("form").on("submit", function (event) {
+    event.preventDefault();
+    addUser();
+  });
   // listen for user to go home
   // header.on("click", loadHomePage); // maybe just relode site?
 
