@@ -23,6 +23,7 @@ var saturdayEl = $("#Saturday");
 var sundayEl = $("#sunday");
 // modal widget
 var dialog, form;
+var cardInfos;
 
 loadHomePage();
 
@@ -66,10 +67,10 @@ function loadResultsPage(event) {
 
   // query data
   var apiObject = ajaxQueryData(event);
-  console.log(apiObject);
+  // console.log(apiObject);
 
   // fill and store results
-  var cardInfos = fillSearchResults(apiObject);
+  cardInfos = fillSearchResults(apiObject);
 }
 
 function positionResultsPage() {
@@ -126,29 +127,37 @@ var fillSearchResults = function (results) {
   // fill object list
   var recipeInfoObjects = [];
 
-  for (var i = 0; i < results.length; i++) {
-    if (results[i].recipe.totalTime !== 0) {
-      var recipeInfo = {};
-      recipeInfo["label"] = results[i].recipe.label;
-      recipeInfo["imgURL"] = results[i].recipe.image;
-      recipeInfo["recipeURL"] = results[i].recipe.url;
-      recipeInfo["time"] = results[i].recipe.totalTime;
-      recipeInfo["calories"] = results[i].recipe.calories;
-      recipeInfoObjects.push(recipeInfo);
-      // console.log(recipeInfo);
-    }
-  }
-  // console.log(recipeInfoObjects);
+  // for (var i = 0; i < results.length; i++) {
+  //   if (results[i].recipe.totalTime !== 0) {
+  //     var recipeInfo = {};
+  //     recipeInfo["label"] = results[i].recipe.label;
+  //     recipeInfo["imgURL"] = results[i].recipe.image;
+  //     recipeInfo["recipeURL"] = results[i].recipe.url;
+  //     recipeInfo["time"] = results[i].recipe.totalTime;
+  //     recipeInfo["calories"] = results[i].recipe.calories;
+  //     recipeInfoObjects.push(recipeInfo);
+  //     // console.log(recipeInfo);
+  //   }
+  // }
 
   // fill recipe cards
   // For each card in #search-results - DOM tree refrence bellow
   var cardNumber = 0;
+  // console.log(cardNumber);
   $(searchResultsEl)
     .children()
     .each(function () {
+      var recipeInfo = {};
+      recipeInfo["label"] = results[cardNumber].recipe.label;
+      recipeInfo["imgURL"] = results[cardNumber].recipe.image;
+      recipeInfo["recipeURL"] = results[cardNumber].recipe.url;
+      recipeInfo["time"] = results[cardNumber].recipe.totalTime;
+      recipeInfo["calories"] = results[cardNumber].recipe.calories;
+      recipeInfoObjects.push(recipeInfo);
+
       $(this).children("div").children("img").attr("src", recipeInfoObjects[cardNumber].imgURL);
 
-      console.log($(this).children("div").children("div"));
+      // console.log($(this).children("div").children("div"));
 
       $(this)
         .children("div")
@@ -192,6 +201,7 @@ var fillSearchResults = function (results) {
       //   .on("click", addToLocal($(this)));
       cardNumber++;
     });
+  // console.log(recipeInfoObjects);
   return recipeInfoObjects;
 };
 
@@ -199,7 +209,7 @@ var addToLocal = function (recipeCard) {
   console.log(recipeCard);
 };
 
-function addUser() {
+function addRecipe() {
   console.log("add user");
 
   // close modal when submited
@@ -217,6 +227,7 @@ $(function () {
   searchButtonEl.on("click", loadResultsPage);
   // console.log($(searchResultsEl).children().children("div").children("div").children("button"));
 
+  var addRecipeButton;
   dialog = $("#dialog-form").dialog({
     dialogClass: "calendarSubmitForm",
     autoOpen: false,
@@ -224,7 +235,7 @@ $(function () {
     width: 350,
     modal: true,
     buttons: {
-      "Create an account": addUser,
+      "Create an account": addRecipe,
       Cancel: function () {
         dialog.dialog("close");
       },
@@ -246,6 +257,7 @@ $(function () {
     .children("button")
     .on("click", function () {
       dialog.dialog("open");
+      addRecipeButton = $(this);
     });
   // listen for user to go home
   // header.on("click", loadHomePage); // maybe just relode site?
