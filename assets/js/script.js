@@ -1,4 +1,6 @@
 // ELEMENT POINTERS
+// header
+var headerEl = $("#page-header");
 //form
 var searchFormEl = $("#search-form");
 var selectionsEl = $("#selections");
@@ -47,23 +49,6 @@ getPhotoApi();
 var edamamEndpoint =
   "https://api.edamam.com/api/recipes/v2?type=public&app_id=0b97683e&app_key=8b9f9e545d235c4ae37ac9cbb16a65a5";
 
-// main (listen for page inputs)
-// runs when DOM is ready
-$(function () {
-  // load the home page on landing
-  // ^^ is now below the element pointers (line 20ish)
-
-  // listen for user to enter search
-  searchFormEl.on("submit", loadResultsPage);
-  searchButtonEl.on("click", loadResultsPage);
-
-  // listen for user to go home
-  // header.on("click", loadHomePage); // maybe just relode site?
-
-  // listen for user to got to calendar
-  // loadCalendarPage();
-}); // main end
-
 function loadHomePage() {
   $(searchBarEl).css({ "margin-top": "350px" });
   resultsJS.style.display = "none";
@@ -81,8 +66,8 @@ function loadResultsPage(event) {
   var apiObject = ajaxQueryData(event);
   console.log(apiObject);
 
-  // fill results
-  fillSearchResults(apiObject);
+  // fill and store results
+  var cardInfos = fillSearchResults(apiObject);
 }
 
 function positionResultsPage() {
@@ -93,17 +78,13 @@ function positionResultsPage() {
 function ajaxQueryData(event) {
   event.preventDefault();
   //collect and store parameters
-  var parameterObj = {};
+  var parameterObj = { random: true };
   // Go through filter selections
   $(selectionsEl)
     .children()
     .each(function () {
       // If the option($(this)) has a value than add it to the paramater object
-      if (
-        $(this).val() != "" &&
-        $(this).val() != null &&
-        $(this).val() != "none"
-      ) {
+      if ($(this).val() != "" && $(this).val() != null && $(this).val() != "none") {
         var inputID = $(this).attr("id");
         var inputValue = $(this).val();
         // use options id and value as key pairs for parameters
@@ -148,6 +129,8 @@ var fillSearchResults = function (results) {
     recipeInfo["label"] = results[i].recipe.label;
     recipeInfo["imgURL"] = results[i].recipe.image;
     recipeInfo["recipeURL"] = results[i].recipe.url;
+    recipeInfo["time"] = results[i].recipe.totalTime;
+    recipeInfo["calories"] = results[i].recipe.calories;
     recipeInfoObjects.push(recipeInfo);
     // console.log(recipeInfo);
   }
@@ -159,10 +142,9 @@ var fillSearchResults = function (results) {
   $(searchResultsEl)
     .children()
     .each(function () {
-      $(this)
-        .children("div")
-        .children("img")
-        .attr("src", recipeInfoObjects[cardNumber].imgURL);
+      $(this).children("div").children("img").attr("src", recipeInfoObjects[cardNumber].imgURL);
+
+      console.log($(this).children("div").children("div"));
 
       $(this)
         .children("div")
@@ -183,12 +165,122 @@ var fillSearchResults = function (results) {
           rel: "noreferrer noopener",
         });
 
+      $(this)
+        .children("div")
+        .children("div")
+        .children("ul")
+        .children("li")
+        .eq(1)
+        .text("Time to make: " + recipeInfoObjects[cardNumber].time);
+
+      $(this)
+        .children("div")
+        .children("div")
+        .children("ul")
+        .children("li")
+        .eq(2)
+        .text("Calories: " + recipeInfoObjects[cardNumber].calories);
+
+      // $(this)
+      //   .children("div")
+      //   .children("div")
+      //   .children("button")
+      //   .on("click", addToLocal($(this)));
       cardNumber++;
     });
+  return recipeInfoObjects;
 };
 
+var addToLocal = function (recipeCard) {
+  console.log(recipeCard);
+};
+
+// DOM reference
+// results = array of objects
+// results[0] = { recipe:{...}, _links{...} }
+// results[0].recipe = { ... }
 // RESULTS PAGE END
 
-// -----------------------------------
+// NOTES
+// form = dialog.find("form").on("submit", function (event) {
+//   event.preventDefault();
+//   addUser();
+// });
 
-// --------CALENDAR PAGE-------------
+// $("#create-user")
+//   .button()
+//   .on("click", function () {
+//     dialog.dialog("open");
+//   });
+// for (let i = 0; i < PerformanceServerTiming.length; i++) {
+//     preSet[i].addEventListener("click");
+//   }
+
+function addUser() {
+  // $("#users tbody").append(
+  //   "<tr>" +
+  //     "<td>" +
+  //     name.val() +
+  //     "</td>" +
+  //     "<td>" +
+  //     email.val() +
+  //     "</td>" +
+  //     "<td>" +
+  //     password.val() +
+  //     "</td>" +
+  //     "</tr>"
+  // );
+  console.log("add user");
+  // dialog.dialog("close");
+}
+
+// main (listen for page inputs)
+// runs when DOM is ready
+$(function () {
+  // load the home page on landing
+  // ^^ is now below the element pointers (line 20ish)
+
+  // listen for user to enter search
+  searchFormEl.on("submit", loadResultsPage);
+  searchButtonEl.on("click", loadResultsPage);
+  // console.log($(searchResultsEl).children().children("div").children("div").children("button"));
+
+  var dialog, form;
+
+  dialog = $("#dialog-form").dialog({
+    dialogClass: "calendarSubmitForm",
+    autoOpen: false,
+    height: 400,
+    width: 350,
+    modal: true,
+    buttons: {
+      "Create an account": addUser,
+      Cancel: function () {
+        dialog.dialog("close");
+      },
+    },
+    close: function () {
+      form[0].reset();
+      allFields.removeClass("ui-state-error");
+    },
+  });
+
+  $(searchResultsEl)
+    .children()
+    .children("div")
+    .children("div")
+    .children("button")
+    .on("click", function () {
+      dialog.dialog("open");
+    });
+
+  form = dialog.children("form").on("submit", function (event) {
+    event.preventDefault();
+    addUser();
+  });
+  // listen for user to go home
+  // header.on("click", loadHomePage); // maybe just relode site?
+
+  // listen for user to got to calendar
+  // loadCalendarPage();
+}); // main end
