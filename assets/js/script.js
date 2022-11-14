@@ -99,11 +99,7 @@ function ajaxQueryData(event) {
     .children()
     .each(function () {
       // If the option($(this)) has a value than add it to the paramater object
-      if (
-        $(this).val() != "" &&
-        $(this).val() != null &&
-        $(this).val() != "none"
-      ) {
+      if ($(this).val() != "" && $(this).val() != null && $(this).val() != "none") {
         var inputID = $(this).attr("id");
         var inputValue = $(this).val();
         // use options id and value as key pairs for parameters
@@ -159,10 +155,7 @@ var fillSearchResults = function (results) {
   $(searchResultsEl)
     .children()
     .each(function () {
-      $(this)
-        .children("div")
-        .children("img")
-        .attr("src", recipeInfoObjects[cardNumber].imgURL);
+      $(this).children("div").children("img").attr("src", recipeInfoObjects[cardNumber].imgURL);
 
       $(this)
         .children("div")
@@ -188,35 +181,6 @@ var fillSearchResults = function (results) {
 };
 
 // RESULTS PAGE END
-
-//MODAL SCRIPT
-
-function modal() {
-
-  var dialog = $( "#dialog-form" ).dialog({
-    autoOpen: false,
-    height: 400,
-    width: 350,
-    modal: true,
-    buttons: {
-      "Add to planner": addUser,
-      Cancel: function() {
-        dialog.dialog( "close" );
-      }
-    },
-  });
-
-  $("#add-recipe").button().on( "click", function() {
-    dialog.dialog( "open" );
-  });
-
-  // ADDING TO ASIDE
-  // var form = dialog.find( "form" ).on( "submit", function( event ) {
-  //   event.preventDefault();
-  //   addUser();
-  // });
-} ;
-
 
 // -----------------------------------
 
