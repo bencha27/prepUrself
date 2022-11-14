@@ -145,3 +145,14 @@ h5 {
   font-family: "Inter", sans-serif !important;
   font-size: 14px !important;
 }
+
+.calendarSubmitForm {
+  background-color: white;
+  border: 3px solid var(--orange);
+}
+
+.modalButtons {
+  background-color: var(--orange);
+  margin: 5px;
+  border-radius: 10px;
+}
