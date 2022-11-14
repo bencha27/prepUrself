@@ -21,6 +21,8 @@ var thursdayEl = $("#thursday");
 var fridayEl = $("#friday");
 var saturdayEl = $("#Saturday");
 var sundayEl = $("#sunday");
+// modal widget
+var dialog, form;
 
 loadHomePage();
 
@@ -125,14 +127,16 @@ var fillSearchResults = function (results) {
   var recipeInfoObjects = [];
 
   for (var i = 0; i < results.length; i++) {
-    var recipeInfo = {};
-    recipeInfo["label"] = results[i].recipe.label;
-    recipeInfo["imgURL"] = results[i].recipe.image;
-    recipeInfo["recipeURL"] = results[i].recipe.url;
-    recipeInfo["time"] = results[i].recipe.totalTime;
-    recipeInfo["calories"] = results[i].recipe.calories;
-    recipeInfoObjects.push(recipeInfo);
-    // console.log(recipeInfo);
+    if (results[i].recipe.totalTime !== 0) {
+      var recipeInfo = {};
+      recipeInfo["label"] = results[i].recipe.label;
+      recipeInfo["imgURL"] = results[i].recipe.image;
+      recipeInfo["recipeURL"] = results[i].recipe.url;
+      recipeInfo["time"] = results[i].recipe.totalTime;
+      recipeInfo["calories"] = results[i].recipe.calories;
+      recipeInfoObjects.push(recipeInfo);
+      // console.log(recipeInfo);
+    }
   }
   // console.log(recipeInfoObjects);
 
@@ -158,7 +162,7 @@ var fillSearchResults = function (results) {
         .children("ul")
         .children("li")
         .children("a")
-        .eq(1)
+        .eq(0)
         .attr({
           href: recipeInfoObjects[cardNumber].recipeURL,
           target: "_blank",
@@ -179,7 +183,7 @@ var fillSearchResults = function (results) {
         .children("ul")
         .children("li")
         .eq(2)
-        .text("Calories: " + recipeInfoObjects[cardNumber].calories);
+        .text("Calories: " + Math.round(recipeInfoObjects[cardNumber].calories));
 
       // $(this)
       //   .children("div")
@@ -195,43 +199,11 @@ var addToLocal = function (recipeCard) {
   console.log(recipeCard);
 };
 
-// DOM reference
-// results = array of objects
-// results[0] = { recipe:{...}, _links{...} }
-// results[0].recipe = { ... }
-// RESULTS PAGE END
-
-// NOTES
-// form = dialog.find("form").on("submit", function (event) {
-//   event.preventDefault();
-//   addUser();
-// });
-
-// $("#create-user")
-//   .button()
-//   .on("click", function () {
-//     dialog.dialog("open");
-//   });
-// for (let i = 0; i < PerformanceServerTiming.length; i++) {
-//     preSet[i].addEventListener("click");
-//   }
-
 function addUser() {
-  // $("#users tbody").append(
-  //   "<tr>" +
-  //     "<td>" +
-  //     name.val() +
-  //     "</td>" +
-  //     "<td>" +
-  //     email.val() +
-  //     "</td>" +
-  //     "<td>" +
-  //     password.val() +
-  //     "</td>" +
-  //     "</tr>"
-  // );
   console.log("add user");
-  // dialog.dialog("close");
+
+  // close modal when submited
+  dialog.dialog("close");
 }
 
 // main (listen for page inputs)
@@ -244,8 +216,6 @@ $(function () {
   searchFormEl.on("submit", loadResultsPage);
   searchButtonEl.on("click", loadResultsPage);
   // console.log($(searchResultsEl).children().children("div").children("div").children("button"));
-
-  var dialog, form;
 
   dialog = $("#dialog-form").dialog({
     dialogClass: "calendarSubmitForm",
@@ -261,8 +231,12 @@ $(function () {
     },
     close: function () {
       form[0].reset();
-      allFields.removeClass("ui-state-error");
     },
+  });
+
+  form = dialog.children("form").on("submit", function (event) {
+    event.preventDefault();
+    addUser();
   });
 
   $(searchResultsEl)
@@ -273,11 +247,6 @@ $(function () {
     .on("click", function () {
       dialog.dialog("open");
     });
-
-  form = dialog.children("form").on("submit", function (event) {
-    event.preventDefault();
-    addUser();
-  });
   // listen for user to go home
   // header.on("click", loadHomePage); // maybe just relode site?
 
