@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>prepUrself Calendar</title>
+    <link rel="stylesheet" href="assets/css/calendar.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+</head>
+
+<body>
+    <header class="container-fluid">
+        <h1 class="float-start">prepUrself</h1>
+
+        <nav class="float-end">
+            <a>Search</a>
+            <a>Calendar</a>
+        </nav>
+    </header>
+
+    <main style="clear:both" class="container-fluid" id="schedule">
+        <div class="row">
+            <div id="monday" class="col flex-column">
+                <h2>Monday</h2>
+                <div id="mon-brk" class="col">
+                    <h3>Breakfast</h3>
+                    <h4>Buttermilk Pancakes</h4>
+                    <select id="day-select">
+                        <option selected disabled>Select day</option>
+                        <option value="mon">Monday</option>
+                        <option value="tue">Tuesday</option>
+                        <option value="wed">Wednesday</option>
+                        <option value="thu">Thursday</option>
+                        <option value="fri">Friday</option>
+                        <option value="sat">Saturday</option>
+                        <option value="sun">Sunday</option>
+                    </select>
+                    <select id="meal-select">
+                        <option selected disabled>Select meal</option>
+                        <option value="brk">Breakfast</option>
+                        <option value="lun">Lunch</option>
+                        <option value="din">Dinner</option>
+                    </select>
+                    <button id="move-btn" data-meal="mon-brk" type="button">Move</button>
+                    <button id="copy-btn" data-meal="mon-brk" type="button">Copy</button>
+                    <button id="remove-btn" data-meal="mon-brk" type="button">Remove</button>
+                </div>
+
+                <div id="mon-lun" class="col">
+                    <h3>Lunch</h3>
+                    <h4>Cheeseburger</h4>
+                    <select id="day-select">
+                        <option selected disabled>Select day</option>
+                        <option value="mon">Monday</option>
+                        <option value="tue">Tuesday</option>
+                        <option value="wed">Wednesday</option>
+                        <option value="thu">Thursday</option>
+                        <option value="fri">Friday</option>
+                        <option value="sat">Saturday</option>
+                        <option value="sun">Sunday</option>
+                    </select>
+                    <select id="meal-select">
+                        <option selected disabled>Select meal</option>
+                        <option value="brk">Breakfast</option>
+                        <option value="lun">Lunch</option>
+                        <option value="din">Dinner</option>
+                    </select>
+                    <button id="move-btn" data-meal="mon-lun" type="button">Move</button>
+                    <button id="copy-btn" data-meal="mon-lun" type="button">Copy</button>
+                    <button id="remove-btn" data-meal="mon-lun" type="button">Remove</button>
+                </div>
+
+                <div id="mon-din" class="col">
+                    <h3>Dinner</h3>
+                    <h4>Spaghetti and Meatballs</h4>
+                    <select id="day-select">
+                        <option selected disabled>Select day</option>
+                        <option value="mon">Monday</option>
+                        <option value="tue">Tuesday</option>
+                        <option value="wed">Wednesday</option>
+                        <option value="thu">Thursday</option>
+                        <option value="fri">Friday</option>
+                        <option value="sat">Saturday</option>
+                        <option value="sun">Sunday</option>
+                    </select>
+                    <select id="meal-select">
+                        <option selected disabled>Select meal</option>
+                        <option value="brk">Breakfast</option>
+                        <option value="lun">Lunch</option>
+                        <option value="din">Dinner</option>
+                    </select>
+                    <button id="move-btn" data-meal="mon-din" type="button">Move</button>
+                    <button id="copy-btn" data-meal="mon-din" type="button">Copy</button>
+                    <button id="remove-btn" data-meal="mon-din" type="button">Remove</button>
+                </div>
+            </div>
+
+            <div id="tuesday" class="col flex-column">
+                <h2>Tuesday</h2>
+                <div id="tue-brk" class="col">
+                    <h3>Breakfast</h3>
+                    <h4>French Toast</h4>
+                    <select id="day-select">
+                        <option selected disabled>Select day</option>
+                        <option value="mon">Monday</option>
+                        <option value="tue">Tuesday</option>
+                        <option value="wed">Wednesday</option>
+                        <option value="thu">Thursday</option>
+                        <option value="fri">Friday</option>
+                        <option value="sat">Saturday</option>
+                        <option value="sun">Sunday</option>
+                    </select>
+                    <select id="meal-select">
+                        <option selected disabled>Select meal</option>
+                        <option value="brk">Breakfast</option>
+                        <option value="lun">Lunch</option>
+                        <option value="din">Dinner</option>
+                    </select>
+                    <button id="move-btn" data-meal="tue-brk" type="button">Move</button>
+                    <button id="copy-btn" data-meal="tue-brk" type="button">Copy</button>
+                    <button id="remove-btn" data-meal="tue-brk" type="button">Remove</button>
+                </div>
+
+                <div id="tue-lun" class="col">
+                    <h3>Lunch</h3>
+                    <h4>Fish Tacos</h4>
+                    <select id="day-select">
+                        <option selected disabled>Select day</option>
+                        <option value="mon">Monday</option>
+                        <option value="tue">Tuesday</option>
+                        <option value="wed">Wednesday</option>
+                        <option value="thu">Thursday</option>
+                        <option value="fri">Friday</option>
+                        <option value="sat">Saturday</option>
+                        <option value="sun">Sunday</option>
+                    </select>
+                    <select id="meal-select">
+                        <option selected disabled>Select meal</option>
+                        <option value="brk">Breakfast</option>
+                        <option value="lun">Lunch</option>
+                        <option value="din">Dinner</option>
+                    </select>
+                    <button id="move-btn" data-meal="tue-lun" type="button">Move</button>
+                    <button id="copy-btn" data-meal="tue-lun" type="button">Copy</button>
+                    <button id="remove-btn" data-meal="tue-lun" type="button">Remove</button>
+                </div>
+
+                <div id="tue-din" class="col">
+                    <h3>Dinner</h3>
+                    <h4>Beef Chili</h4>
+                    <select id="day-select">
+                        <option selected disabled>Select day</option>
+                        <option value="mon">Monday</option>
+                        <option value="tue">Tuesday</option>
+                        <option value="wed">Wednesday</option>
+                        <option value="thu">Thursday</option>
+                        <option value="fri">Friday</option>
+                        <option value="sat">Saturday</option>
+                        <option value="sun">Sunday</option>
+                    </select>
+                    <select id="meal-select">
+                        <option selected disabled>Select meal</option>
+                        <option value="brk">Breakfast</option>
+                        <option value="lun">Lunch</option>
+                        <option value="din">Dinner</option>
+                    </select>
+                    <button id="move-btn" data-meal="tue-din" type="button">Move</button>
+                    <button id="copy-btn" data-meal="tue-din" type="button">Copy</button>
+                    <button id="remove-btn" data-meal="tue-din" type="button">Remove</button>
+                </div>
+            </div>
+
+            <div id="wednesday" class="col flex-column">
+                <h2>Wednesday</h2>
+                <div id="wed-brk" class="col">
+                    <h3>Breakfast</h3>
+                    <h4></h4>
+                    <select id="day-select">
+                        <option selected disabled>Select day</option>
+                        <option value="mon">Monday</option>
+                        <option value="tue">Tuesday</option>
+                        <option value="wed">Wednesday</option>
+                        <option value="thu">Thursday</option>
+                        <option value="fri">Friday</option>
+                        <option value="sat">Saturday</option>
+                        <option value="sun">Sunday</option>
+                    </select>
+                    <select id="meal-select">
+                        <option selected disabled>Select meal</option>
+                        <option value="brk">Breakfast</option>
+                        <option value="lun">Lunch</option>
+                        <option value="din">Dinner</option>
+                    </select>
+                    <button id="move-btn" data-meal="wed-brk" type="button">Move</button>
+                    <button id="copy-btn" data-meal="wed-brk" type="button">Copy</button>
+                    <button id="remove-btn" data-meal="wed-brk" type="button">Remove</button>
+                </div>
+
+                <div id="wed-lun" class="col">
+                    <h3>Lunch</h3>
+                    <h4></h4>
+                    <select id="day-select">
+                        <option selected disabled>Select day</option>
+                        <option value="mon">Monday</option>
+                        <option value="tue">Tuesday</option>
+                        <option value="wed">Wednesday</option>
+                        <option value="thu">Thursday</option>
+                        <option value="fri">Friday</option>
+                        <option value="sat">Saturday</option>
+                        <option value="sun">Sunday</option>
+                    </select>
+                    <select id="meal-select">
+                        <option selected disabled>Select meal</option>
+                        <option value="brk">Breakfast</option>
+                        <option value="lun">Lunch</option>
+                        <option value="din">Dinner</option>
+                    </select>
+                    <button id="move-btn" data-meal="wed-lun" type="button">Move</button>
+                    <button id="copy-btn" data-meal="wed-lun" type="button">Copy</button>
+                    <button id="remove-btn" data-meal="wed-lun" type="button">Remove</button>
+                </div>
+
+                <div id="wed-din" class="col">
+                    <h3>Dinner</h3>
+                    <h4></h4>
+                    <select id="day-select">
+                        <option selected disabled>Select day</option>
+                        <option value="mon">Monday</option>
+                        <option value="tue">Tuesday</option>
+                        <option value="wed">Wednesday</option>
+                        <option value="thu">Thursday</option>
+                        <option value="fri">Friday</option>
+                        <option value="sat">Saturday</option>
+                        <option value="sun">Sunday</option>
+                    </select>
+                    <select id="meal-select">
+                        <option selected disabled>Select meal</option>
+                        <option value="brk">Breakfast</option>
+                        <option value="lun">Lunch</option>
+                        <option value="din">Dinner</option>
+                    </select>
+                    <button id="move-btn" data-meal="wed-din" type="button">Move</button>
+                    <button id="copy-btn" data-meal="wed-din" type="button">Copy</button>
+                    <button id="remove-btn" data-meal="wed-din" type="button">Remove</button>
+                </div>
+            </div>
+
+            <div id="thursday" class="col flex-column">
+                <h2>Thursday</h2>
+                <div id="thu-brk" class="col">
+                    <h3>Breakfast</h3>
+                    <h4></h4>
+                    <select id="day-select">
+                        <option selected disabled>Select day</option>
+                        <option value="mon">Monday</option>
+                        <option value="tue">Tuesday</option>
+                        <option value="wed">Wednesday</option>
+                        <option value="thu">Thursday</option>
+                        <option value="fri">Friday</option>
+                        <option value="sat">Saturday</option>
+                        <option value="sun">Sunday</option>
+                    </select>
+                    <select id="meal-select">
+                        <option selected disabled>Select meal</option>
+                        <option value="brk">Breakfast</option>
+                        <option value="lun">Lunch</option>
+                        <option value="din">Dinner</option>
+                    </select>
+                    <button id="move-btn" data-meal="thu-brk" type="button">Move</button>
+                    <button id="copy-btn" data-meal="thu-brk" type="button">Copy</button>
+                    <button id="remove-btn" data-meal="thu-brk" type="button">Remove</button>
+                </div>
+
+                <div id="thu-lun" class="col">
+                    <h3>Lunch</h3>
+                    <h4></h4>
+                    <select id="day-select">
+                        <option selected disabled>Select day</option>
+                        <option value="mon">Monday</option>
+                        <option value="tue">Tuesday</option>
+                        <option value="wed">Wednesday</option>
+                        <option value="thu">Thursday</option>
+                        <option value="fri">Friday</option>
+                        <option value="sat">Saturday</option>
+                        <option value="sun">Sunday</option>
+                    </select>
+                    <select id="meal-select">
+                        <option selected disabled>Select meal</option>
+                        <option value="brk">Breakfast</option>
+                        <option value="lun">Lunch</option>
+                        <option value="din">Dinner</option>
+                    </select>
+                    <button id="move-btn" data-meal="thu-lun" type="button">Move</button>
+                    <button id="copy-btn" data-meal="thu-lun" type="button">Copy</button>
+                    <button id="remove-btn" data-meal="thu-lun" type="button">Remove</button>
+                </div>
+
+                <div id="thu-din" class="col">
+                    <h3>Dinner</h3>
+                    <h4></h4>
+                    <select id="day-select">
+                        <option selected disabled>Select day</option>
+                        <option value="mon">Monday</option>
+                        <option value="tue">Tuesday</option>
+                        <option value="wed">Wednesday</option>
+                        <option value="thu">Thursday</option>
+                        <option value="fri">Friday</option>
+                        <option value="sat">Saturday</option>
+                        <option value="sun">Sunday</option>
+                    </select>
+                    <select id="meal-select">
+                        <option selected disabled>Select meal</option>
+                        <option value="brk">Breakfast</option>
+                        <option value="lun">Lunch</option>
+                        <option value="din">Dinner</option>
+                    </select>
+                    <button id="move-btn" data-meal="thu-din" type="button">Move</button>
+                    <button id="copy-btn" data-meal="thu-din" type="button">Copy</button>
+                    <button id="remove-btn" data-meal="thu-din" type="button">Remove</button>
+                </div>
+            </div>
+
+            <div id="friday" class="col flex-column">
+                <h2>Friday</h2>
+                <div id="fri-brk" class="col">
+                    <h3>Breakfast</h3>
+                    <h4></h4>
+                    <select id="day-select">
+                        <option selected disabled>Select day</option>
+                        <option value="mon">Monday</option>
+                        <option value="tue">Tuesday</option>
+                        <option value="wed">Wednesday</option>
+                        <option value="thu">Thursday</option>
+                        <option value="fri">Friday</option>
+                        <option value="sat">Saturday</option>
+                        <option value="sun">Sunday</option>
+                    </select>
+                    <select id="meal-select">
+                        <option selected disabled>Select meal</option>
+                        <option value="brk">Breakfast</option>
+                        <option value="lun">Lunch</option>
+                        <option value="din">Dinner</option>
+                    </select>
+                    <button id="move-btn" data-meal="fri-brk" type="button">Move</button>
+                    <button id="copy-btn" data-meal="fri-brk" type="button">Copy</button>
+                    <button id="remove-btn" data-meal="fri-brk" type="button">Remove</button>
+                </div>
+
+                <div id="fri-lun" class="col">
+                    <h3>Lunch</h3>
+                    <h4></h4>
+                    <select id="day-select">
+                        <option selected disabled>Select day</option>
+                        <option value="mon">Monday</option>
+                        <option value="tue">Tuesday</option>
+                        <option value="wed">Wednesday</option>
+                        <option value="thu">Thursday</option>
+                        <option value="fri">Friday</option>
+                        <option value="sat">Saturday</option>
+                        <option value="sun">Sunday</option>
+                    </select>
+                    <select id="meal-select">
+                        <option selected disabled>Select meal</option>
+                        <option value="brk">Breakfast</option>
+                        <option value="lun">Lunch</option>
+                        <option value="din">Dinner</option>
+                    </select>
+                    <button id="move-btn" data-meal="fri-lun" type="button">Move</button>
+                    <button id="copy-btn" data-meal="fri-lun" type="button">Copy</button>
+                    <button id="remove-btn" data-meal="fri-lun" type="button">Remove</button>
+                </div>
+
+                <div id="fri-din" class="col">
+                    <h3>Dinner</h3>
+                    <h4></h4>
+                    <select id="day-select">
+                        <option selected disabled>Select day</option>
+                        <option value="mon">Monday</option>
+                        <option value="tue">Tuesday</option>
+                        <option value="wed">Wednesday</option>
+                        <option value="thu">Thursday</option>
+                        <option value="fri">Friday</option>
+                        <option value="sat">Saturday</option>
+                        <option value="sun">Sunday</option>
+                    </select>
+                    <select id="meal-select">
+                        <option selected disabled>Select meal</option>
+                        <option value="brk">Breakfast</option>
+                        <option value="lun">Lunch</option>
+                        <option value="din">Dinner</option>
+                    </select>
+                    <button id="move-btn" data-meal="fri-din" type="button">Move</button>
+                    <button id="copy-btn" data-meal="fri-din" type="button">Copy</button>
+                    <button id="remove-btn" data-meal="fri-din" type="button">Remove</button>
+                </div>
+            </div>
+
+            <div id="saturday" class="col flex-column">
+                <h2>Saturday</h2>
+                <div id="sat-brk" class="col">
+                    <h3>Breakfast</h3>
+                    <h4></h4>
+                    <select id="day-select">
+                        <option selected disabled>Select day</option>
+                        <option value="mon">Monday</option>
+                        <option value="tue">Tuesday</option>
+                        <option value="wed">Wednesday</option>
+                        <option value="thu">Thursday</option>
+                        <option value="fri">Friday</option>
+                        <option value="sat">Saturday</option>
+                        <option value="sun">Sunday</option>
+                    </select>
+                    <select id="meal-select">
+                        <option selected disabled>Select meal</option>
+                        <option value="brk">Breakfast</option>
+                        <option value="lun">Lunch</option>
+                        <option value="din">Dinner</option>
+                    </select>
+                    <button id="move-btn" data-meal="sat-brk" type="button">Move</button>
+                    <button id="copy-btn" data-meal="sat-brk" type="button">Copy</button>
+                    <button id="remove-btn" data-meal="sat-brk" type="button">Remove</button>
+                </div>
+
+                <div id="sat-lun" class="col">
+                    <h3>Lunch</h3>
+                    <h4></h4>
+                    <select id="day-select">
+                        <option selected disabled>Select day</option>
+                        <option value="mon">Monday</option>
+                        <option value="tue">Tuesday</option>
+                        <option value="wed">Wednesday</option>
+                        <option value="thu">Thursday</option>
+                        <option value="fri">Friday</option>
+                        <option value="sat">Saturday</option>
+                        <option value="sun">Sunday</option>
+                    </select>
+                    <select id="meal-select">
+                        <option selected disabled>Select meal</option>
+                        <option value="brk">Breakfast</option>
+                        <option value="lun">Lunch</option>
+                        <option value="din">Dinner</option>
+                    </select>
+                    <button id="move-btn" data-meal="sat-lun" type="button">Move</button>
+                    <button id="copy-btn" data-meal="sat-lun" type="button">Copy</button>
+                    <button id="remove-btn" data-meal="sat-lun" type="button">Remove</button>
+                </div>
+
+                <div id="sat-din" class="col">
+                    <h3>Dinner</h3>
+                    <h4></h4>
+                    <select id="day-select">
+                        <option selected disabled>Select day</option>
+                        <option value="mon">Monday</option>
+                        <option value="tue">Tuesday</option>
+                        <option value="wed">Wednesday</option>
+                        <option value="thu">Thursday</option>
+                        <option value="fri">Friday</option>
+                        <option value="sat">Saturday</option>
+                        <option value="sun">Sunday</option>
+                    </select>
+                    <select id="meal-select">
+                        <option selected disabled>Select meal</option>
+                        <option value="brk">Breakfast</option>
+                        <option value="lun">Lunch</option>
+                        <option value="din">Dinner</option>
+                    </select>
+                    <button id="move-btn" data-meal="sat-din" type="button">Move</button>
+                    <button id="copy-btn" data-meal="sat-din" type="button">Copy</button>
+                    <button id="remove-btn" data-meal="sat-din" type="button">Remove</button>
+                </div>
+            </div>
+
+            <div id="sunday" class="col flex-column">
+                <h2>Sunday</h2>
+                <div id="sun-brk" class="col">
+                    <h3>Breakfast</h3>
+                    <h4></h4>
+                    <select id="day-select">
+                        <option selected disabled>Select day</option>
+                        <option value="mon">Monday</option>
+                        <option value="tue">Tuesday</option>
+                        <option value="wed">Wednesday</option>
+                        <option value="thu">Thursday</option>
+                        <option value="fri">Friday</option>
+                        <option value="sat">Saturday</option>
+                        <option value="sun">Sunday</option>
+                    </select>
+                    <select id="meal-select">
+                        <option selected disabled>Select meal</option>
+                        <option value="brk">Breakfast</option>
+                        <option value="lun">Lunch</option>
+                        <option value="din">Dinner</option>
+                    </select>
+                    <button id="move-btn" data-meal="sun-brk" type="button">Move</button>
+                    <button id="copy-btn" data-meal="sun-brk" type="button">Copy</button>
+                    <button id="remove-btn" data-meal="sun-brk" type="button">Remove</button>
+                </div>
+
+                <div id="sun-lun" class="col">
+                    <h3>Lunch</h3>
+                    <h4></h4>
+                    <select id="day-select">
+                        <option selected disabled>Select day</option>
+                        <option value="mon">Monday</option>
+                        <option value="tue">Tuesday</option>
+                        <option value="wed">Wednesday</option>
+                        <option value="thu">Thursday</option>
+                        <option value="fri">Friday</option>
+                        <option value="sat">Saturday</option>
+                        <option value="sun">Sunday</option>
+                    </select>
+                    <select id="meal-select">
+                        <option selected disabled>Select meal</option>
+                        <option value="brk">Breakfast</option>
+                        <option value="lun">Lunch</option>
+                        <option value="din">Dinner</option>
+                    </select>
+                    <button id="move-btn" data-meal="sun-lun" type="button">Move</button>
+                    <button id="copy-btn" data-meal="sun-lun" type="button">Copy</button>
+                    <button id="remove-btn" data-meal="sun-lun" type="button">Remove</button>
+                </div>
+
+                <div id="sun-din" class="col">
+                    <h3>Dinner</h3>
+                    <h4></h4>
+                    <select id="day-select">
+                        <option selected disabled>Select day</option>
+                        <option value="mon">Monday</option>
+                        <option value="tue">Tuesday</option>
+                        <option value="wed">Wednesday</option>
+                        <option value="thu">Thursday</option>
+                        <option value="fri">Friday</option>
+                        <option value="sat">Saturday</option>
+                        <option value="sun">Sunday</option>
+                    </select>
+                    <select id="meal-select">
+                        <option selected disabled>Select meal</option>
+                        <option value="brk">Breakfast</option>
+                        <option value="lun">Lunch</option>
+                        <option value="din">Dinner</option>
+                    </select>
+                    <button id="move-btn" data-meal="sun-din" type="button">Move</button>
+                    <button id="copy-btn" data-meal="sun-din" type="button">Copy</button>
+                    <button id="remove-btn" data-meal="sun-din" type="button">Remove</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>Powered by EDAMAM</footer>
+    <script src="./assets/js/calendar.js"></script>
+</body>
+</html>
