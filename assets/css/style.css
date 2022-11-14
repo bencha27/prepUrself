@@ -76,8 +76,8 @@ header {
   border-right: 2px solid white !important;
 }
 
-#page-header:pointer {
-  curser: pointer;
+#page-header :pointer {
+  cursor: pointer;
 }
 
 h1 {
@@ -104,6 +104,10 @@ option {
 #search-bar {
   margin-top: 350px;
   margin-bottom: 20px;
+}
+
+input {
+  
 }
 
 #search-button {
