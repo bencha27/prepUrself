@@ -84,7 +84,11 @@ function ajaxQueryData(event) {
     .children()
     .each(function () {
       // If the option($(this)) has a value than add it to the paramater object
-      if ($(this).val() != "" && $(this).val() != null && $(this).val() != "none") {
+      if (
+        $(this).val() != "" &&
+        $(this).val() != null &&
+        $(this).val() != "none"
+      ) {
         var inputID = $(this).attr("id");
         var inputValue = $(this).val();
         // use options id and value as key pairs for parameters
@@ -142,7 +146,10 @@ var fillSearchResults = function (results) {
   $(searchResultsEl)
     .children()
     .each(function () {
-      $(this).children("div").children("img").attr("src", recipeInfoObjects[cardNumber].imgURL);
+      $(this)
+        .children("div")
+        .children("img")
+        .attr("src", recipeInfoObjects[cardNumber].imgURL);
 
       console.log($(this).children("div").children("div"));
 
@@ -253,12 +260,31 @@ $(function () {
     height: 400,
     width: 350,
     modal: true,
-    buttons: {
-      "Create an account": addUser,
-      Cancel: function () {
-        dialog.dialog("close");
+    buttons: [
+      {
+        text: "Add to Planner!",
+        class: "modalButtons",
+        click: function () {
+          addUser();
+        },
       },
-    },
+      {
+        text: "Cancel",
+        class: "modalButtons",
+        click: function () {
+          dialog.dialog("close");
+        },
+      },
+    ],
+    // buttons: [
+    //   {
+    //     "Add to Planner!": addUser,
+    //     class: "modalButtons",
+    //     Cancel: function () {
+    //       dialog.dialog("close");
+    //     },
+    //   },
+    // ],
     close: function () {
       form[0].reset();
       allFields.removeClass("ui-state-error");
