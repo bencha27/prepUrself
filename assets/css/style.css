@@ -108,7 +108,9 @@ option {
   margin-bottom: 20px;
 }
 
-
+input {
+  height: 45px;
+}
 
 #search-button {
   background-color: var(--orange);
