@@ -12,15 +12,15 @@ var resultsContainerEl = $("#search-results-container");
 var searchResultsEl = $("#search-results");
 // js DOM used for loadHomePage() function
 var resultsJS = document.getElementById("search-results-container");
-// aside
-var scheduleEl = $("#schedule");
-var mondayEl = $("#monday");
-var tuesdayEl = $("#tuesday");
-var wednesdayEl = $("#wednesday");
-var thursdayEl = $("#thursday");
-var fridayEl = $("#friday");
-var saturdayEl = $("#Saturday");
-var sundayEl = $("#sunday");
+// // aside
+// var scheduleEl = $("#schedule");
+// var mondayEl = $("#monday");
+// var tuesdayEl = $("#tuesday");
+// var wednesdayEl = $("#wednesday");
+// var thursdayEl = $("#thursday");
+// var fridayEl = $("#friday");
+// var saturdayEl = $("#Saturday");
+// var sundayEl = $("#sunday");
 // modal widget
 var weekDayEl = $("#week-day");
 var mealTypeEl = $("#meal-type");
@@ -58,22 +58,29 @@ var edamamEndpoint =
   "https://api.edamam.com/api/recipes/v2?type=public&app_id=0b97683e&app_key=8b9f9e545d235c4ae37ac9cbb16a65a5";
 
 function loadHomePage() {
+  // position search bar in the middle and hide no-results message
   $(searchBarEl).css({ "margin-top": "350px" });
   resultsJS.style.display = "none";
+  $("#no-results").hide();
 }
 
-// -------- RESULTS PAGE ---------------
 // call ajaxQueryData
 // position page elements
 // fill in results with data
 function loadResultsPage(event) {
-  // postion elements
-  positionResultsPage();
-
   // query data
   var apiObject = ajaxQueryData(event);
-  // console.log(apiObject);
 
+  //if no results then display message
+  if (apiObject.length == 0) {
+    $("#no-results").show();
+    return 0;
+  } else {
+    $("#no-results").hide();
+  }
+
+  // postion elements
+  positionResultsPage();
   // clear, fill, and store results
   fillSearchResults(apiObject);
 }
@@ -137,7 +144,7 @@ var fillSearchResults = function (results) {
   var resultsIndex = 0;
   var cardNumber = 0;
   // console.log(cardNumber);
-  console.log(results);
+  // console.log(results);
   $(searchResultsEl)
     .children()
     .each(function () {
@@ -146,9 +153,9 @@ var fillSearchResults = function (results) {
       var goodLink = false;
       while (!goodLink) {
         if (results[resultsIndex].recipe.totalTime != 0) {
-          console.log("if");
-          console.log(results[resultsIndex]);
-          console.log(results[resultsIndex].recipe.totalTime);
+          // console.log("if");
+          // console.log(results[resultsIndex]);
+          // console.log(results[resultsIndex].recipe.totalTime);
           var recipeInfo = {};
           recipeInfo["label"] = results[resultsIndex].recipe.label;
           recipeInfo["imgURL"] = results[resultsIndex].recipe.image;
@@ -158,14 +165,14 @@ var fillSearchResults = function (results) {
           loadedRecipeObjects.push(recipeInfo);
           goodLink = true;
         } else {
-          console.log("else");
-          console.log(results[resultsIndex]);
-          console.log(results[resultsIndex].recipe.totalTime);
+          // console.log("else");
+          // console.log(results[resultsIndex]);
+          // console.log(results[resultsIndex].recipe.totalTime);
           resultsIndex++;
         }
       }
 
-      console.log(resultsIndex);
+      // console.log(resultsIndex);
       // fill recipe cards
       $(this).children("div").children("img").attr("src", loadedRecipeObjects[cardNumber].imgURL);
 
