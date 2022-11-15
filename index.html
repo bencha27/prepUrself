@@ -25,9 +25,11 @@
     <script src="https://developer.edamam.com/attribution/badge.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
   </head>
-
   <body class="row">
     <div class="col-lg-2 col-md-4 col-sm-4 p-0 p-0">
+
+<!-- Start of the Aside -->
+
       <aside class="aside">
         <div id="monday" class="card aside-card" style="width: 18rem; height: 9.5rem">
           <div class="card-body">
@@ -82,7 +84,6 @@
             </div>
           </div>
         </div>
-
         <div id="tuesday" class="card aside-card" style="width: 18rem; height: 9.5rem">
           <div class="card-body">
             <h6 class="card-title text-decoration-underline aside-card-title">Tuesday</h6>
@@ -405,11 +406,17 @@
     </div>
     <div class="col-lg-10 col-md-8 col-sm-8 p-0 p-0">
       <main>
+
+<!-- Header Section -->
+
         <header>
           <h1 id="page-header" class="text-center m-0">prepUrself <i class="fa-solid fa-utensils fa-xs"></i></h1>
           <h2 id="edamam-badge" class="text-center m-0" data-color="transparent"></h2>
         </header>
-        <div class="card text-bg-dark bgImage">
+
+<!-- Start of Search Area (Main section of Page) -->
+
+        <div class=" card text-bg-dark bgImage">
           <img
           id="background-image"
             src=""
@@ -463,7 +470,6 @@
                   </select>
                 </div>
               </div>
-
               <div id="search-bar" class="text-center align-items-center">
                 <input
                   id="q"
@@ -480,6 +486,9 @@
                 </button>
               </div>
             </form>
+
+<!-- Start of Results Section (Recipe cards are displayed) -->
+
             <section id="search-results-container" class="recipeView container card">
               <div id="search-results" class="row">
                 <div class="col-3">
@@ -494,42 +503,7 @@
                           <li class="list-group-item" >Calories:</li>
                         </ul>
                       </p>
-                     <button id="add-recipe" class="addBtn">Add Recipe to Meal Plan!</button>
-                 
-                    </div>
-                  </div>
-                </div>
-                 <div class="col-3">
-                  <div class="card recipeCard" style="width: 16rem">
-                    <img src="" class="card-img-top" alt="..." />
-                    <div class="card-body">
-                      <h5 class="card-title">Recipe 1</h5>
-                      <p class="card-text">
-                        <ul style="justify-content: flex-start">
-                          <li class="list-group-item" ><a href="#">Instructions</a></li>
-                          <li class="list-group-item" >Time to make:</li>
-                          <li class="list-group-item" >Calories:</li>
-                        </ul>
-                      </p>
-                     <button id="add-recipe" class="addBtn">Add Recipe to Meal Plan!</button>
-                 
-                    </div>
-                  </div>
-                </div>
-                 <div class="col-3">
-                  <div class="card recipeCard" style="width: 16rem">
-                    <img src="" class="card-img-top" alt="..." />
-                    <div class="card-body">
-                      <h5 class="card-title">Recipe 1</h5>
-                      <p class="card-text">
-                        <ul style="justify-content: flex-start">
-                          <li class="list-group-item" ><a href="#">Instructions</a></li>
-                          <li class="list-group-item" >Time to make:</li>
-                          <li class="list-group-item" >Calories:</li>
-                        </ul>
-                      </p>
-                     <button id="add-recipe" class="addBtn">Add Recipe to Meal Plan!</button>
-                 
+                      <button id="add-recipe-1" class="addBtn">Add Recipe to Meal Plan!</button>
                     </div>
                   </div>
                 </div>
@@ -545,12 +519,11 @@
                           <li class="list-group-item" >Calories:</li>
                         </ul>
                       </p>
-                     <button id="add-recipe" class="addBtn">Add Recipe to Meal Plan!</button>
-                 
+                      <button id="add-recipe-2" class="addBtn">Add Recipe to Meal Plan!</button>
                     </div>
                   </div>
                 </div>
-                 <div class="col-3">
+                <div class="col-3">
                   <div class="card recipeCard" style="width: 16rem">
                     <img src="" class="card-img-top" alt="..." />
                     <div class="card-body">
@@ -562,29 +535,11 @@
                           <li class="list-group-item" >Calories:</li>
                         </ul>
                       </p>
-                     <button id="add-recipe" class="addBtn">Add Recipe to Meal Plan!</button>
-                 
-                    </div>
-                  </div>
-                 </div>
-                 <div class="col-3">
-                  <div class="card recipeCard" style="width: 16rem">
-                    <img src="" class="card-img-top" alt="..." />
-                    <div class="card-body">
-                      <h5 class="card-title">Recipe 1</h5>
-                      <p class="card-text">
-                        <ul style="justify-content: flex-start">
-                          <li class="list-group-item" ><a href="#">Instructions</a></li>
-                          <li class="list-group-item" >Time to make:</li>
-                          <li class="list-group-item" >Calories:</li>
-                        </ul>
-                      </p>
-                     <button id="add-recipe" class="addBtn">Add Recipe to Meal Plan!</button>
-                 
+                      <button id="add-recipe-3" class="addBtn">Add Recipe to Meal Plan!</button>
                     </div>
                   </div>
                 </div>
-                 <div class="col-3">
+                <div class="col-3">
                   <div class="card recipeCard" style="width: 16rem">
                     <img src="" class="card-img-top" alt="..." />
                     <div class="card-body">
@@ -596,12 +551,11 @@
                           <li class="list-group-item" >Calories:</li>
                         </ul>
                       </p>
-                     <button id="add-recipe" class="addBtn">Add Recipe to Meal Plan!</button>
-                 
+                      <button id="add-recipe-4" class="addBtn">Add Recipe to Meal Plan!</button>
                     </div>
                   </div>
                 </div>
-                 <div class="col-3">
+                <div class="col-3">
                   <div class="card recipeCard" style="width: 16rem">
                     <img src="" class="card-img-top" alt="..." />
                     <div class="card-body">
@@ -613,19 +567,69 @@
                           <li class="list-group-item" >Calories:</li>
                         </ul>
                       </p>
-                     <button id="add-recipe" class="addBtn">Add Recipe to Meal Plan!</button>
-                 
+                      <button id="add-recipe-5" class="addBtn">Add Recipe to Meal Plan!</button>
                     </div>
                   </div>
+                </div>
+                <div class="col-3">
+                  <div class="card recipeCard" style="width: 16rem">
+                    <img src="" class="card-img-top" alt="..." />
+                    <div class="card-body">
+                      <h5 class="card-title">Recipe 1</h5>
+                      <p class="card-text">
+                        <ul style="justify-content: flex-start">
+                          <li class="list-group-item" ><a href="#">Instructions</a></li>
+                          <li class="list-group-item" >Time to make:</li>
+                          <li class="list-group-item" >Calories:</li>
+                        </ul>
+                      </p>
+                      <button id="add-recipe-6" class="addBtn">Add Recipe to Meal Plan!</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <div class="card recipeCard" style="width: 16rem">
+                    <img src="" class="card-img-top" alt="..." />
+                    <div class="card-body">
+                      <h5 class="card-title">Recipe 1</h5>
+                      <p class="card-text">
+                        <ul style="justify-content: flex-start">
+                          <li class="list-group-item" ><a href="#">Instructions</a></li>
+                          <li class="list-group-item" >Time to make:</li>
+                          <li class="list-group-item" >Calories:</li>
+                        </ul>
+                      </p>
+                      <button id="add-recipe-7" class="addBtn">Add Recipe to Meal Plan!</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <div class="card recipeCard" style="width: 16rem">
+                    <img src="" class="card-img-top" alt="..." />
+                    <div class="card-body">
+                      <h5 class="card-title">Recipe 1</h5>
+                      <p class="card-text">
+                        <ul style="justify-content: flex-start">
+                          <li class="list-group-item" ><a href="#">Instructions</a></li>
+                          <li class="list-group-item" >Time to make:</li>
+                          <li class="list-group-item" >Calories:</li>
+                        </ul>
+                      </p>
+                      <button id="add-recipe-8" class="addBtn">Add Recipe to Meal Plan!</button>
+                  </div>
+                </div>
                 </div>
               </div>
             </section>
           </div>
         </div>
-        <div id="dialog-form" style="background-color: white;">
+
+<!-- Start of Modal -->
+
+        <div id="dialog-form">
           <form>
             <fieldset>
-              <label for="week-dropdown">What day would you like to add this recipe to?</label>
+              <label class="modalStyle" for="week-dropdown">What day would you like to add this recipe to?</label>
                 <select id="week-day">
                   <option value="none">Choose a day</option>
                   <option value="monday">Monday</option>
@@ -635,7 +639,7 @@
                   <option value="friday">Friday</option>
                   <option value="saturday">Saturday</option>
                 </select>
-              <label for="meal-dropdown">What meal would you like to add this recipe to?</label>
+              <label class="modalStyle" for="meal-dropdown">What meal would you like to add this recipe to?</label>
                 <select id="meal-type">
                   <option value="none">Choose a meal</option>
                   <option value="breakfast">Breakfast</option>
@@ -647,8 +651,13 @@
         </div>
       </main>
     </div>
+
+<!-- Footer Section -->
+
     <footer class="text-center">Brought to you by For Lack of A Better Team Name👾</footer>
     <script src="./assets/js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
   </body>
 </html>
+
+<!-- The End -->
