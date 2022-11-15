@@ -24,7 +24,8 @@ var resultsJS = document.getElementById("search-results-container");
 // modal widget
 var weekDayEl = $("#week-day");
 var mealTypeEl = $("#meal-type");
-var dialog, form;
+var dialog;
+// var form;
 
 var addRecipeButton;
 var loadedRecipeObjects;
@@ -55,7 +56,7 @@ getPhotoApi();
 
 // The endpoint with only id and key
 var edamamEndpoint =
-  "https://api.edamam.com/api/recipes/v2?type=public&app_id=0b97683e&app_key=8b9f9e545d235c4ae37ac9cbb16a65a5";
+  "https://api.edamam.com/api/recipes/v2?type=public&app_id=0b97683e&app_key=8b9f9e545d235c4ae37ac9cbb16a65a5&time=1%2B";
 
 function loadHomePage() {
   // position search bar in the middle and hide no-results message
@@ -71,6 +72,8 @@ function loadResultsPage(event) {
   // query data
   var apiObject = ajaxQueryData(event);
 
+  console.log("apiObject");
+  console.log(apiObject);
   //if no results then display message
   if (apiObject.length == 0) {
     $("#no-results").show();
@@ -86,6 +89,7 @@ function loadResultsPage(event) {
 }
 
 function positionResultsPage() {
+  // put search bar at the top and show results card
   $(searchBarEl).css({ "margin-top": "20px" });
   resultsJS.style.display = "block";
 }
@@ -141,42 +145,24 @@ var fillSearchResults = function (results) {
   loadedRecipeObjects = [];
 
   // For each card in #search-results - DOM tree refrence bellow
-  var resultsIndex = 0;
+  // var resultsIndex = 0;
   var cardNumber = 0;
   // console.log(cardNumber);
-  // console.log(results);
+  console.log(results);
   $(searchResultsEl)
     .children()
     .each(function () {
       // store results
+      var recipeInfo = {};
+      recipeInfo["label"] = results[cardNumber].recipe.label;
+      recipeInfo["imgURL"] = results[cardNumber].recipe.image;
+      recipeInfo["recipeURL"] = results[cardNumber].recipe.url;
+      recipeInfo["time"] = results[cardNumber].recipe.totalTime;
+      recipeInfo["calories"] = results[cardNumber].recipe.calories;
+      loadedRecipeObjects.push(recipeInfo);
 
-      var goodLink = false;
-      while (!goodLink) {
-        if (results[resultsIndex].recipe.totalTime != 0) {
-          // console.log("if");
-          // console.log(results[resultsIndex]);
-          // console.log(results[resultsIndex].recipe.totalTime);
-          var recipeInfo = {};
-          recipeInfo["label"] = results[resultsIndex].recipe.label;
-          recipeInfo["imgURL"] = results[resultsIndex].recipe.image;
-          recipeInfo["recipeURL"] = results[resultsIndex].recipe.url;
-          recipeInfo["time"] = results[resultsIndex].recipe.totalTime;
-          recipeInfo["calories"] = results[resultsIndex].recipe.calories;
-          loadedRecipeObjects.push(recipeInfo);
-          goodLink = true;
-        } else {
-          // console.log("else");
-          // console.log(results[resultsIndex]);
-          // console.log(results[resultsIndex].recipe.totalTime);
-          resultsIndex++;
-        }
-      }
-
-      // console.log(resultsIndex);
       // fill recipe cards
       $(this).children("div").children("img").attr("src", loadedRecipeObjects[cardNumber].imgURL);
-
-      // console.log($(this).children("div").children("div"));
 
       $(this)
         .children("div")
@@ -212,7 +198,6 @@ var fillSearchResults = function (results) {
         .children("li")
         .eq(2)
         .text("Calories: " + Math.round(loadedRecipeObjects[cardNumber].calories));
-      resultsIndex++;
       cardNumber++;
     });
 };
@@ -244,34 +229,33 @@ function refreshAside() {
   var storedKeys = Object.keys(localStorage);
   // console.log(storedKeys);
   // console.log(storedKeys.length);
-  if (storedKeys.length != null) {
-    for (var i = 0; i < storedKeys.length; i++) {
-      // console.log(storedKeys[i]);
-      var currentObject = JSON.parse(localStorage.getItem(storedKeys[i]));
-      // console.log(JSON.parse(localStorage.getItem(storedKeys[i])));
-      // console.log(JSON.parse(localStorage.getItem(storedKeys[i].weekDay)));
+  for (var i = 0; i < storedKeys.length; i++) {
+    // console.log(storedKeys[i]);
+    var currentObject = JSON.parse(localStorage.getItem(storedKeys[i]));
 
-      day = currentObject.weekDay;
-      meal = currentObject.mealType.split("-")[0];
-      meal = meal.charAt(0).toUpperCase() + meal.slice(1);
-      mealNum = currentObject.mealType.split("-")[1];
+    // console.log(JSON.parse(localStorage.getItem(storedKeys[i])));
+    // console.log(JSON.parse(localStorage.getItem(storedKeys[i].weekDay)));
 
-      $("#" + day)
-        .children()
-        .eq(0)
-        .children()
-        .eq(mealNum)
-        .children("p")
-        .children("a")
-        .text(currentObject.label)
-        .attr({ href: currentObject.recipeURL, target: "_blank", rel: "noreferrer noopener" });
+    day = currentObject.weekDay;
+    meal = currentObject.mealType.split("-")[0];
+    meal = meal.charAt(0).toUpperCase() + meal.slice(1);
+    mealNum = currentObject.mealType.split("-")[1];
 
-      $("#" + day)
-        .children()
-        .eq(0)
-        .children()
-        .eq(meal.split("-")[1]);
-    }
+    $("#" + day)
+      .children()
+      .eq(0)
+      .children()
+      .eq(mealNum)
+      .children("p")
+      .children("a")
+      .text(currentObject.label)
+      .attr({ href: currentObject.recipeURL, target: "_blank", rel: "noreferrer noopener" });
+
+    $("#" + day)
+      .children()
+      .eq(0)
+      .children()
+      .eq(meal.split("-")[1]);
   }
 
   // console.log(Object.keys(localStorage));
@@ -308,15 +292,12 @@ $(function () {
         },
       },
     ],
-    close: function () {
-      form[0].reset();
-    },
   });
 
-  form = dialog.children("form").on("submit", function (event) {
-    event.preventDefault();
-    addUser();
-  });
+  // form = dialog.children("form").on("submit", function (event) {
+  //   event.preventDefault();
+  //   addUser();
+  // });
 
   $(searchResultsEl)
     .children()
