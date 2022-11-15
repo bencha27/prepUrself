@@ -249,17 +249,6 @@ function refreshAside() {
       meal = meal.charAt(0).toUpperCase() + meal.slice(1);
       mealNum = currentObject.mealType.split("-")[1];
 
-      // console.log(day + " " + meal);
-      // console.log($("#" + day).children());
-      // console.log(
-      //   $("#" + day)
-      //     .children()
-      //     .eq(0)
-      //     .children()
-      //     .eq(mealNum)
-      //     .children("p")
-      // );
-
       $("#" + day)
         .children()
         .eq(0)
@@ -339,7 +328,23 @@ $(function () {
     .children("button")
     .on("click", function removeRecipe(e) {
       console.log($(this).parent());
-      $(this).parent().children("p").children("a").text("").attr("href", "");
 
+      var day, meal, mealNum, storageKey;
+
+      meal = $(this).parent().children("p").children("span").text().split(":")[0].toLowerCase();
+
+      if (meal == "breakfast") {
+        mealNum = 1;
+      } else if (meal == "lunch") {
+        mealNum = 2;
+      } else {
+        mealNum = 3;
+      }
+      day = $(this).parent().parent().parent().attr("id");
+      storageKey = day + "-" + meal + "-" + mealNum;
+
+      console.log(storageKey);
+      localStorage.removeItem(storageKey);
+      $(this).parent().children("p").children("a").text("");
     });
 }); // main end
