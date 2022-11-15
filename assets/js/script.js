@@ -86,6 +86,7 @@ function loadResultsPage(event) {
 }
 
 function positionResultsPage() {
+  // put search bar at the top and show results card
   $(searchBarEl).css({ "margin-top": "20px" });
   resultsJS.style.display = "block";
 }
