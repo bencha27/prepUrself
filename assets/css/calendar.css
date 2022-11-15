@@ -1,45 +1,124 @@
+:root {
+    --teal: #37bbca;
+    --blue: #0191b6;
+    --yellow: #f9d80d;
+    --green: #79ca38;
+    --orange: #ff7b17;
+}
+  
+html {
+    background-color: var(--blue);
+}
+
 header {
-    background-color: lavender;
-    height: 10vh;
-    padding: 4px 16px;
+    background-color: var(--blue);
+    color: white;
+    font-family: "Marcellus", serif;
+    border-bottom: 2px solid white !important;
+    border-top: 2px solid white !important;
+    border-right: 2px solid white !important;
+}
+
+.navbar {
+    float: right;
+    position: relative;
+    top: -80px;
+    right: 20px;
+}
+
+.navbar-link {
+    font-size: 24px;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.navbar-link:hover {
+    color: var(--orange);
 }
 
 main {
-    height: 85vh;
-    padding: 8px 16px;
-}
-
-#meals-list {
+    clear: right;
     position: relative;
-    top: 44px;
+    top: -72px;
 }
 
-#meal {
-    height: 23vh;
-    margin: 16px 0px;
+#schedule {
+    margin-top: 8px;
 }
 
-
-h3 {
-    text-align: center;
-}
-
-.calendar-heading {
-    padding: 0 20px;
-}
-
-.calendar-heading div {
-    margin: 0 10px;
-    text-align: center;
-    font-size: 20px;
+#schedule h2 {
+    font-size: 28px;
     font-weight: bold;
+    color: var(--blue);
+    text-align: center;
+    margin: 8px 0 auto;
 }
 
+.meal-column {
+    padding: 8px 0px;
+}
 
+.meal-card {
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 10px;
+    background-color: var(--teal);
+    color: white;
+    margin: 10px 0;
+    padding: 5px;
+    height: 240px;
+    position: relative;
+}
 
+.meal-card h3 {
+    font-size: 20px;
+    color: dimgray;
+    margin-bottom: 0;
+    text-align: end;
+}
 
-footer {
-    background-color: lavender;
-    height: 5vh;
-    padding: 4px 16px;
+.meal-card h4 {
+    font-size: 20px;
+    max-height: 48px;
+    padding: 4px;
+    text-align: center;
+}
+
+.meal-card img {
+    max-width: 240px;
+    height: 80px;
+    display: block;
+    margin: 0 auto;
+}
+
+#selects {
+    position: absolute;
+    bottom: 36px;
+}
+
+.meal-card select {
+    background-color: var(--orange);
+    color: white;
+    border-radius: 5px;
+    font-size: 16px;
+    margin: 4px 0;
+    padding: 2px;
+}
+
+#buttons {
+    position: absolute;
+    bottom: 6px;
+}
+
+.meal-card button {
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: var(--green);
+    padding: 0 4px;
+}
+
+#remove-btn {
+    position: relative;
+    left: 58px;
 }
