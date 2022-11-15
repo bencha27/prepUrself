@@ -24,25 +24,37 @@ So that I have an easy way to plan my weekly meals.
 
 ## Usage
 
-Use the search input to look up a type of dish:
-[screenshot]
+# Use the search input to look up a type of dish:
 
-Filter your options by Diet, Cuisine, Meal, and Dish type:
-[screenshot]
+![screenshot1](./assets/images/Search%20bar.png)
 
-Peruse the recipes:
-[screenshot]
 
-Choose a where you would like to add the recipe, and see it pop up on your meal planner:
-[screenshot]
-[screenshot]
+# Filter your options by Diet, Cuisine, Meal, and Dish type:
+
+![screenshot2](./assets/images/Dropdowns.png)
+
+
+# Peruse the recipes:
+
+![screenshot3](./assets/images/recipes.png)
+
+
+# Choose a where you would like to add the recipe, and see it pop up on your meal planner:
+
+![screenshot4](./assets/images/adding.png)
+
+![screenshot5](./assets/images/nice!.png)
 
 ## Credits
 
 Created by For Lack of a Better Team Name👾:
+
 Benjamin Cha - https://github.com/bencha27
+
 Jason Duran - https://github.com/BluSkreen
+
 Erich Ebbinghaus - https://github.com/eebbinghaus
+
 Tessa Robinson - https://github.com/tessie-the-messy
 
 ## License
