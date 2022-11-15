@@ -3,6 +3,7 @@ scheduleEl.addEventListener("click", function(event) {
     var element = event.target;
 
     if (element.matches("#move-btn")) {
+        console.log("Move button");
         var currentMeal = element.getAttribute("data-meal");
 
         var currentMealEl = document.querySelector("#" + currentMeal);
@@ -21,13 +22,15 @@ scheduleEl.addEventListener("click", function(event) {
         var newMealImage = newMealEl.children[2];
 
         if (currentMeal !== newMeal) {
-            if (currentMealRecipeName !== "") {
-                newMealRecipe.textContent = currentMealRecipeName;
-                currentMealRecipe.textContent = "";
-            }
-            if (currentMealImageUrl !== "") {
-                newMealImage.setAttribute("src", currentMealImageUrl)
-                currentMealImage.setAttribute("src", "")
+            if (newMealRecipe.textContent === "") {
+                if (currentMealRecipeName !== "") {
+                    newMealRecipe.textContent = currentMealRecipeName;
+                    currentMealRecipe.textContent = "";
+                }
+                if (currentMealImageUrl !== "") {
+                    newMealImage.setAttribute("src", currentMealImageUrl)
+                    currentMealImage.setAttribute("src", "")
+                }
             }
         }
     }
@@ -51,8 +54,10 @@ scheduleEl.addEventListener("click", function(event) {
         var newMealImage = newMealEl.children[2];
 
         if (currentMealRecipeName !== "") {
-            newMealRecipe.textContent = currentMealRecipeName;
-            newMealImage.setAttribute("src", currentMealImageUrl);
+            if (newMealRecipe.textContent === "") {
+                newMealRecipe.textContent = currentMealRecipeName;
+                newMealImage.setAttribute("src", currentMealImageUrl);
+            }
         }    
     }
 
