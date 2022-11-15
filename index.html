@@ -21,8 +21,8 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-    <script src="https://developer.edamam.com/attribution/badge.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="https://developer.edamam.com/attribution/badge.js"></script>
   </head>
   <body class="row">
     <div class="col-lg-2 col-md-4 col-sm-4 p-0 p-0">
@@ -31,7 +31,7 @@
 
       <aside class="aside">
         <div id="monday" class="card aside-card" style="width: 18rem; height: 9.5rem">
-          <div class="card-body">
+          <div class="card-body" style = "--bs-card-spacer-y: 0.5rem;" >
             <h6 class="card-title  text-decoration-underline aside-card-title">Monday</h6>
             <div class="row">
               <p class="col-lg-9 card-text aside-card-text">
@@ -87,7 +87,7 @@
           </div>
         </div>
         <div id="tuesday" class="card aside-card" style="width: 18rem; height: 9.5rem">
-          <div class="card-body">
+          <div class="card-body" style = "--bs-card-spacer-y: 0.5rem;">
             <h6 class="card-title text-decoration-underline aside-card-title">Tuesday</h6>
             <div class="row">
               <p class="col-lg-9 card-text aside-card-text">
@@ -143,7 +143,7 @@
           </div>
         </div>
         <div id="wednesday" class="card aside-card" style="width: 18rem; height: 9.5rem">
-          <div class="card-body">
+          <div class="card-body" style = "--bs-card-spacer-y: 0.5rem;">
             <h6 class="card-title text-decoration-underline aside-card-title">Wednesday</h6>
             <div class="row">
               <p class="col-lg-9 card-text aside-card-text">
@@ -199,7 +199,7 @@
           </div>
         </div>
         <div id="thursday" class="card aside-card" style="width: 18rem; height: 9.5rem">
-          <div class="card-body">
+          <div class="card-body" style = "--bs-card-spacer-y: 0.5rem;">
             <h6 class="card-title text-decoration-underline aside-card-title">Thursday</h6>
             <div class="row">
               <p class="col-lg-9 card-text aside-card-text">
@@ -255,7 +255,7 @@
           </div>
         </div>
         <div id="friday" class="card aside-card" style="width: 18rem; height: 9.5rem">
-          <div class="card-body">
+          <div class="card-body" style = "--bs-card-spacer-y: 0.5rem;">
             <h6 class="card-title text-decoration-underline aside-card-title">Friday</h6>
             <div class="row">
               <p class="col-lg-9 card-text aside-card-text">
@@ -311,7 +311,7 @@
           </div>
         </div>
         <div id="saturday" class="card aside-card" style="width: 18rem; height: 9.5rem">
-          <div class="card-body">
+          <div class="card-body" style = "--bs-card-spacer-y: 0.5rem;">
             <h6 class="card-title text-decoration-underline aside-card-title">Saturday</h6>
             <div class="row">
               <p class="col-lg-9 card-text aside-card-text">
@@ -367,7 +367,7 @@
           </div>
         </div>
         <div id="sunday" class="card aside-card" style="width: 18rem; height: 9.5rem">
-          <div class="card-body">
+          <div class="card-body" style = "--bs-card-spacer-y: 0.5rem;">
             <h6 class="card-title text-decoration-underline aside-card-title">Sunday</h6>
             <div class="row">
               <p class="col-lg-9 card-text aside-card-text">
@@ -495,17 +495,17 @@
                   id="q"
                   type="text"
                   placeholder="What to prep?"
-                  class="col-4"
+                  class="col-5"
                 />
                 <button
                   type="button"
-                  class="btn btn-primary btn-lg"
+                  class="btn btn-primary btn-md"
                   id="search-button"
                 >
                   Find recipes!
                 </button>
               </div>
-              <div id="no-results">No Results Found</div>
+              <div id="no-results" class="text-center">No Results Found</div>
             </form>
 
 <!-- Start of Results Section (Recipe cards are displayed) -->
