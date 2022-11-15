@@ -1,7 +1,7 @@
 // ELEMENT POINTERS
 // header
 var headerEl = $("#page-header");
-//form
+// home form
 var searchFormEl = $("#search-form");
 var selectionsEl = $("#selections");
 var searchInputEl = $("#q");
@@ -12,24 +12,18 @@ var resultsContainerEl = $("#search-results-container");
 var searchResultsEl = $("#search-results");
 // js DOM used for loadHomePage() function
 var resultsJS = document.getElementById("search-results-container");
-// // aside
-// var scheduleEl = $("#schedule");
-// var mondayEl = $("#monday");
-// var tuesdayEl = $("#tuesday");
-// var wednesdayEl = $("#wednesday");
-// var thursdayEl = $("#thursday");
-// var fridayEl = $("#friday");
-// var saturdayEl = $("#Saturday");
-// var sundayEl = $("#sunday");
-// modal widget
+// aside
 var weekDayEl = $("#week-day");
 var mealTypeEl = $("#meal-type");
+// global variables
+// modal
 var dialog;
-// var form;
-
+// track specific addRecipe button
 var addRecipeButton;
+// stored formated recipe objects displayed on results page
 var loadedRecipeObjects;
 
+// pre load
 loadHomePage();
 refreshAside();
 
@@ -202,12 +196,14 @@ var fillSearchResults = function (results) {
     });
 };
 
+// this function creates a unique ID for recipes it add to local storage
+// NOTE: appon further review, the format "#{mealDay}-{mealTime}" seems to be a better ID format
+// mealDay and mealTime is all that is needed to navigated the DOM AND retrieve apropiate data
+// from local storage
 function addRecipe() {
-  // console.log(addRecipeButton);
   // store button {id} using split --> add-recipe-{id}
   buttonID = addRecipeButton.attr("id").split("-")[2];
   buttonID -= 1;
-  // console.log(buttonID);
 
   loadedRecipeObjects[buttonID].weekDay = weekDayEl.val();
   loadedRecipeObjects[buttonID].mealType = mealTypeEl.val();
@@ -222,25 +218,24 @@ function addRecipe() {
   dialog.dialog("close");
 }
 
+// displays localStorage items in the aside
+// NOTE: new storage ID format is not implements, see function addRecipe() above
 function refreshAside() {
   // get items from local storage
   var day;
   var meal;
   var storedKeys = Object.keys(localStorage);
-  // console.log(storedKeys);
-  // console.log(storedKeys.length);
   for (var i = 0; i < storedKeys.length; i++) {
     // console.log(storedKeys[i]);
     var currentObject = JSON.parse(localStorage.getItem(storedKeys[i]));
 
-    // console.log(JSON.parse(localStorage.getItem(storedKeys[i])));
-    // console.log(JSON.parse(localStorage.getItem(storedKeys[i].weekDay)));
-
+    // prepare variables used for DOM manipulation
     day = currentObject.weekDay;
     meal = currentObject.mealType.split("-")[0];
     meal = meal.charAt(0).toUpperCase() + meal.slice(1);
     mealNum = currentObject.mealType.split("-")[1];
 
+    // Update textcontent and use ancor tags
     $("#" + day)
       .children()
       .eq(0)
@@ -251,15 +246,13 @@ function refreshAside() {
       .text(currentObject.label)
       .attr({ href: currentObject.recipeURL, target: "_blank", rel: "noreferrer noopener" });
 
+    // make sure meal time is still displayed
     $("#" + day)
       .children()
       .eq(0)
       .children()
       .eq(meal.split("-")[1]);
   }
-
-  // console.log(Object.keys(localStorage));
-  // localStorage.getItem()
 }
 
 // main (listen for page inputs)
@@ -294,11 +287,7 @@ $(function () {
     ],
   });
 
-  // form = dialog.children("form").on("submit", function (event) {
-  //   event.preventDefault();
-  //   addUser();
-  // });
-
+  // add to callendar button listeners
   $(searchResultsEl)
     .children()
     .children("div")
@@ -306,16 +295,18 @@ $(function () {
     .children("button")
     .on("click", function () {
       dialog.dialog("open");
+      // track button specific to recipe card
       addRecipeButton = $(this);
     });
 
+  // aside remoce recipe button listeners
   $("aside")
     .children()
     .children("div")
     .children("div")
     .children("button")
     .on("click", function removeRecipe(e) {
-      console.log($(this).parent());
+      // console.log($(this).parent());
 
       var day, meal, mealNum, storageKey;
 
@@ -331,7 +322,7 @@ $(function () {
       day = $(this).parent().parent().parent().attr("id");
       storageKey = day + "-" + meal + "-" + mealNum;
 
-      console.log(storageKey);
+      // console.log(storageKey);
       localStorage.removeItem(storageKey);
       $(this).parent().children("p").children("a").text("");
     });
