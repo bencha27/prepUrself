@@ -21,8 +21,16 @@ var thursdayEl = $("#thursday");
 var fridayEl = $("#friday");
 var saturdayEl = $("#Saturday");
 var sundayEl = $("#sunday");
+// modal widget
+var weekDayEl = $("#week-day");
+var mealTypeEl = $("#meal-type");
+var dialog, form;
+
+var addRecipeButton;
+var loadedRecipeObjects;
 
 loadHomePage();
+refreshAside();
 
 // Pull random photo from API into img element
 function getPhotoApi() {
@@ -64,10 +72,10 @@ function loadResultsPage(event) {
 
   // query data
   var apiObject = ajaxQueryData(event);
-  console.log(apiObject);
+  // console.log(apiObject);
 
-  // fill and store results
-  var cardInfos = fillSearchResults(apiObject);
+  // clear, fill, and store results
+  fillSearchResults(apiObject);
 }
 
 function positionResultsPage() {
@@ -84,11 +92,7 @@ function ajaxQueryData(event) {
     .children()
     .each(function () {
       // If the option($(this)) has a value than add it to the paramater object
-      if (
-        $(this).val() != "" &&
-        $(this).val() != null &&
-        $(this).val() != "none"
-      ) {
+      if ($(this).val() != "" && $(this).val() != null && $(this).val() != "none") {
         var inputID = $(this).attr("id");
         var inputValue = $(this).val();
         // use options id and value as key pairs for parameters
@@ -120,44 +124,58 @@ function ajaxQueryData(event) {
       storeResults = result.hits;
     },
   });
+
   return storeResults;
 }
 
 var fillSearchResults = function (results) {
   // create cardInfo Objects using the API data
-  // fill object list
-  var recipeInfoObjects = [];
+  // clear results
+  loadedRecipeObjects = [];
 
-  for (var i = 0; i < results.length; i++) {
-    var recipeInfo = {};
-    recipeInfo["label"] = results[i].recipe.label;
-    recipeInfo["imgURL"] = results[i].recipe.image;
-    recipeInfo["recipeURL"] = results[i].recipe.url;
-    recipeInfo["time"] = results[i].recipe.totalTime;
-    recipeInfo["calories"] = results[i].recipe.calories;
-    recipeInfoObjects.push(recipeInfo);
-    // console.log(recipeInfo);
-  }
-  // console.log(recipeInfoObjects);
-
-  // fill recipe cards
   // For each card in #search-results - DOM tree refrence bellow
+  var resultsIndex = 0;
   var cardNumber = 0;
+  // console.log(cardNumber);
+  console.log(results);
   $(searchResultsEl)
     .children()
     .each(function () {
-      $(this)
-        .children("div")
-        .children("img")
-        .attr("src", recipeInfoObjects[cardNumber].imgURL);
+      // store results
 
-      console.log($(this).children("div").children("div"));
+      var goodLink = false;
+      while (!goodLink) {
+        if (results[resultsIndex].recipe.totalTime != 0) {
+          console.log("if");
+          console.log(results[resultsIndex]);
+          console.log(results[resultsIndex].recipe.totalTime);
+          var recipeInfo = {};
+          recipeInfo["label"] = results[resultsIndex].recipe.label;
+          recipeInfo["imgURL"] = results[resultsIndex].recipe.image;
+          recipeInfo["recipeURL"] = results[resultsIndex].recipe.url;
+          recipeInfo["time"] = results[resultsIndex].recipe.totalTime;
+          recipeInfo["calories"] = results[resultsIndex].recipe.calories;
+          loadedRecipeObjects.push(recipeInfo);
+          goodLink = true;
+        } else {
+          console.log("else");
+          console.log(results[resultsIndex]);
+          console.log(results[resultsIndex].recipe.totalTime);
+          resultsIndex++;
+        }
+      }
+
+      console.log(resultsIndex);
+      // fill recipe cards
+      $(this).children("div").children("img").attr("src", loadedRecipeObjects[cardNumber].imgURL);
+
+      // console.log($(this).children("div").children("div"));
 
       $(this)
         .children("div")
         .children("div")
         .children("h5")
-        .text(recipeInfoObjects[cardNumber].label);
+        .text(loadedRecipeObjects[cardNumber].label);
 
       $(this)
         .children("div")
@@ -165,9 +183,9 @@ var fillSearchResults = function (results) {
         .children("ul")
         .children("li")
         .children("a")
-        .eq(1)
+        .eq(0)
         .attr({
-          href: recipeInfoObjects[cardNumber].recipeURL,
+          href: loadedRecipeObjects[cardNumber].recipeURL,
           target: "_blank",
           rel: "noreferrer noopener",
         });
@@ -178,7 +196,7 @@ var fillSearchResults = function (results) {
         .children("ul")
         .children("li")
         .eq(1)
-        .text("Time to make: " + recipeInfoObjects[cardNumber].time);
+        .text("Time to make: " + loadedRecipeObjects[cardNumber].time);
 
       $(this)
         .children("div")
@@ -186,74 +204,81 @@ var fillSearchResults = function (results) {
         .children("ul")
         .children("li")
         .eq(2)
-        .text("Calories: " + recipeInfoObjects[cardNumber].calories);
-
-      // $(this)
-      //   .children("div")
-      //   .children("div")
-      //   .children("button")
-      //   .on("click", addToLocal($(this)));
+        .text("Calories: " + Math.round(loadedRecipeObjects[cardNumber].calories));
+      resultsIndex++;
       cardNumber++;
     });
-  return recipeInfoObjects;
 };
 
-var addToLocal = function (recipeCard) {
-  console.log(recipeCard);
-};
+function addRecipe() {
+  // console.log(addRecipeButton);
+  // store button {id} using split --> add-recipe-{id}
+  buttonID = addRecipeButton.attr("id").split("-")[2];
+  buttonID -= 1;
+  // console.log(buttonID);
 
-// DOM reference
-// results = array of objects
-// results[0] = { recipe:{...}, _links{...} }
-// results[0].recipe = { ... }
-// RESULTS PAGE END
+  loadedRecipeObjects[buttonID].weekDay = weekDayEl.val();
+  loadedRecipeObjects[buttonID].mealType = mealTypeEl.val();
 
-// NOTES
-// form = dialog.find("form").on("submit", function (event) {
-//   event.preventDefault();
-//   addUser();
-// });
+  var storageID =
+    loadedRecipeObjects[buttonID].weekDay + "-" + loadedRecipeObjects[buttonID].mealType;
 
-// $("#create-user")
-//   .button()
-//   .on("click", function () {
-//     dialog.dialog("open");
-//   });
-// for (let i = 0; i < PerformanceServerTiming.length; i++) {
-//     preSet[i].addEventListener("click");
-//   }
+  localStorage.setItem(storageID, JSON.stringify(loadedRecipeObjects[buttonID]));
 
-function addUser() {
-  // $("#users tbody").append(
-  //   "<tr>" +
-  //     "<td>" +
-  //     name.val() +
-  //     "</td>" +
-  //     "<td>" +
-  //     email.val() +
-  //     "</td>" +
-  //     "<td>" +
-  //     password.val() +
-  //     "</td>" +
-  //     "</tr>"
-  // );
-  console.log("add user");
-  // dialog.dialog("close");
+  refreshAside();
+  // close modal when submited
+  dialog.dialog("close");
+}
+
+function refreshAside() {
+  // get items from local storage
+  var day;
+  var meal;
+  var storedKeys = Object.keys(localStorage);
+  // console.log(storedKeys);
+  // console.log(storedKeys.length);
+  if (storedKeys.length != null) {
+    for (var i = 0; i < storedKeys.length; i++) {
+      // console.log(storedKeys[i]);
+      var currentObject = JSON.parse(localStorage.getItem(storedKeys[i]));
+      // console.log(JSON.parse(localStorage.getItem(storedKeys[i])));
+      // console.log(JSON.parse(localStorage.getItem(storedKeys[i].weekDay)));
+
+      day = currentObject.weekDay;
+      meal = currentObject.mealType.split("-")[0];
+      meal = meal.charAt(0).toUpperCase() + meal.slice(1);
+      mealNum = currentObject.mealType.split("-")[1];
+
+      $("#" + day)
+        .children()
+        .eq(0)
+        .children()
+        .eq(mealNum)
+        .children("p")
+        .children("a")
+        .text(currentObject.label)
+        .attr({ href: currentObject.recipeURL, target: "_blank", rel: "noreferrer noopener" });
+
+      $("#" + day)
+        .children()
+        .eq(0)
+        .children()
+        .eq(meal.split("-")[1]);
+    }
+  }
+
+  // console.log(Object.keys(localStorage));
+  // localStorage.getItem()
 }
 
 // main (listen for page inputs)
 // runs when DOM is ready
 $(function () {
-  // load the home page on landing
-  // ^^ is now below the element pointers (line 20ish)
-
   // listen for user to enter search
   searchFormEl.on("submit", loadResultsPage);
   searchButtonEl.on("click", loadResultsPage);
-  // console.log($(searchResultsEl).children().children("div").children("div").children("button"));
 
-  var dialog, form;
-
+  // modal widget
   dialog = $("#dialog-form").dialog({
     dialogClass: "calendarSubmitForm",
     autoOpen: false,
@@ -265,7 +290,7 @@ $(function () {
         text: "Add to Planner!",
         class: "modalButtons",
         click: function () {
-          addUser();
+          addRecipe();
         },
       },
       {
@@ -276,18 +301,14 @@ $(function () {
         },
       },
     ],
-    // buttons: [
-    //   {
-    //     "Add to Planner!": addUser,
-    //     class: "modalButtons",
-    //     Cancel: function () {
-    //       dialog.dialog("close");
-    //     },
-    //   },
-    // ],
     close: function () {
       form[0].reset();
     },
+  });
+
+  form = dialog.children("form").on("submit", function (event) {
+    event.preventDefault();
+    addUser();
   });
 
   $(searchResultsEl)
@@ -297,15 +318,33 @@ $(function () {
     .children("button")
     .on("click", function () {
       dialog.dialog("open");
+      addRecipeButton = $(this);
     });
 
-  form = dialog.children("form").on("submit", function (event) {
-    event.preventDefault();
-    addUser();
-  });
-  // listen for user to go home
-  // header.on("click", loadHomePage); // maybe just relode site?
+  $("aside")
+    .children()
+    .children("div")
+    .children("div")
+    .children("button")
+    .on("click", function removeRecipe(e) {
+      console.log($(this).parent());
 
-  // listen for user to got to calendar
-  // loadCalendarPage();
+      var day, meal, mealNum, storageKey;
+
+      meal = $(this).parent().children("p").children("span").text().split(":")[0].toLowerCase();
+
+      if (meal == "breakfast") {
+        mealNum = 1;
+      } else if (meal == "lunch") {
+        mealNum = 2;
+      } else {
+        mealNum = 3;
+      }
+      day = $(this).parent().parent().parent().attr("id");
+      storageKey = day + "-" + meal + "-" + mealNum;
+
+      console.log(storageKey);
+      localStorage.removeItem(storageKey);
+      $(this).parent().children("p").children("a").text("");
+    });
 }); // main end
