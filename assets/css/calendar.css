@@ -43,11 +43,11 @@ main {
     top: -72px;
 }
 
-#schedule {
+#days {
     margin-top: 8px;
 }
 
-#schedule h2 {
+#days h2 {
     font-size: 28px;
     font-weight: bold;
     color: var(--blue);
