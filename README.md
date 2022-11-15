@@ -1,18 +1,29 @@
 # Meal Planner App
 
-## User Story
+## Description
+prepUrself is a meal planning application that allows users to search recipes, and assign them to days of the week, for an easy way to meal prep!
 
-As a meal prepper/planner
-I want to find recipes that meet my diet 
-So that I have an easy way to plan my weekly meals
+### User Story
 
-##Acceptance Criteria
+As a meal prepper/planner,
 
-Given I am a meal prepper/planner
-When I provide dietary requirements
-Then I am provided with a list of recipes
-When I find a recipe I want to use
-Then I am able to assign it to a weekly planner
-When I have completed my meal plan
-Then it will save to the browser
+I want to find recipes that meet my diet, 
+
+So that I have an easy way to plan my weekly meals.
+
+### Acceptance Criteria
+
+- GIVEN I am a meal prepper/planner
+- WHEN I provide dietary requirements
+- THEN I am provided with a list of recipes
+- WHEN I find a recipe I want to use
+- THEN I am able to assign it to a weekly planner
+- WHEN I have completed my meal plan
+- THEN it will save to the browser
+
+## Usage
+
+## Credits
+
+## License
  
