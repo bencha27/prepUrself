@@ -197,9 +197,6 @@ var fillSearchResults = function (results) {
 };
 
 // this function creates a unique ID for recipes it add to local storage
-// NOTE: appon further review, the format "#{mealDay}-{mealTime}" seems to be a better ID format
-// mealDay and mealTime is all that is needed to navigated the DOM AND retrieve apropiate data
-// from local storage
 function addRecipe() {
   // store button {id} using split --> add-recipe-{id}
   buttonID = addRecipeButton.attr("id").split("-")[2];
@@ -219,7 +216,6 @@ function addRecipe() {
 }
 
 // displays localStorage items in the aside
-// NOTE: new storage ID format is not implements, see function addRecipe() above
 function refreshAside() {
   // get items from local storage
   var day;
